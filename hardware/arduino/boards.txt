@@ -577,7 +577,7 @@ gelatino16.bootloader.low_fuses=0xFF
 gelatino16.bootloader.high_fuses=0xDD
 gelatino16.bootloader.extended_fuses=0xFF
 gelatino16.bootloader.path=atmega
-gelatino16.bootloader.file=ATmegaBOOT_168_atmega16.hex
+gelatino16.bootloader.file=ATmegaBOOT_168_gelatino16.hex
 gelatino16.bootloader.unlock_bits=0x3F
 gelatino16.bootloader.lock_bits=0x0F
 
@@ -598,7 +598,7 @@ gelatino32.bootloader.low_fuses=0xFF
 gelatino32.bootloader.high_fuses=0xDA
 gelatino32.bootloader.extended_fuses=0xFF
 gelatino32.bootloader.path=atmega
-gelatino32.bootloader.file=ATmegaBOOT_168_atmega32.hex
+gelatino32.bootloader.file=ATmegaBOOT_168_gelatino32.hex
 gelatino32.bootloader.unlock_bits=0x3F
 gelatino32.bootloader.lock_bits=0x0F
 
@@ -619,7 +619,7 @@ gelatino128.bootloader.low_fuses=0xFF
 gelatino128.bootloader.high_fuses=0xDA
 gelatino128.bootloader.extended_fuses=0xFF
 gelatino128.bootloader.path=atmega
-gelatino128.bootloader.file=ATmegaBOOT_168_atmega128.hex
+gelatino128.bootloader.file=ATmegaBOOT_168_gelatino128.hex
 gelatino128.bootloader.unlock_bits=0x3F
 gelatino128.bootloader.lock_bits=0x0F
 
