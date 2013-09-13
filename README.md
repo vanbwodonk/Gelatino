@@ -1,4 +1,4 @@
-gelatino
+Gelatino
 ========
 Other Arduino Compatible Project
 
