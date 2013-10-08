@@ -128,7 +128,7 @@
 
 /* onboard LED is used to indicate, that the bootloader was entered (3x flashing) */
 /* if monitor functions are included, LED goes on after monitor was entered */
-#if defined __AVR_ATmega16__ || defined __AVR_ATmega32__ || defined __AVR_ATmega8535__
+#if defined (__AVR_ATmega16__) || (defined __AVR_ATmega32__) || defined (__AVR_ATmega8535__)
 #define LED_DDR  DDRD
 #define LED_PORT PORTD
 #define LED_PIN  PIND
@@ -387,7 +387,7 @@ int main(void)
 	timing out (DAM: 20070509) */
 	DDRD &= ~_BV(PIND0);
 	PORTD |= _BV(PIND0);
-#elif defined __AVR_ATmega8__
+#elif defined(__AVR_ATmega8__) || defined(__AVR_ATmega32__) || defined(__AVR_ATmega16__)
 	/* m8 */
 	UBRRH = (((F_CPU/BAUD_RATE)/16)-1)>>8; 	// set baud rate
 	UBRRL = (((F_CPU/BAUD_RATE)/16)-1);
