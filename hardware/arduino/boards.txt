@@ -574,8 +574,8 @@ gelatino16.upload.maximum_size=14336
 gelatino16.upload.speed=57600
 
 gelatino16.bootloader.low_fuses=0xFF
-gelatino16.bootloader.high_fuses=0xDD
-gelatino16.bootloader.extended_fuses=0xFF
+gelatino16.bootloader.high_fuses=0xD8
+gelatino16.bootloader.extended_fuses=0x00
 gelatino16.bootloader.path=atmega
 gelatino16.bootloader.file=ATmegaBOOT_168_gelatino16.hex
 gelatino16.bootloader.unlock_bits=0x3F
