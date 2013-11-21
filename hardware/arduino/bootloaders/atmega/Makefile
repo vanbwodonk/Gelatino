@@ -190,7 +190,7 @@ gelatino16: $(PROGRAM)_gelatino16.hex
 gelatino16_isp: atmega16
 gelatino16_isp: TARGET = atmega16
 gelatino16_isp: MCU_TARGET = m16
-gelatino16_isp: HFUSE = DD
+gelatino16_isp: HFUSE = D8
 gelatino16_isp: LFUSE = FF
 gelatino16_isp: EFUSE = 00
 gelatino16_isp: isp
