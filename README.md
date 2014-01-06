@@ -15,20 +15,20 @@ Gelatino have 3 variants:
 
 Gelatino's schematic is like other arduino standard. Gelatino using 16 Mhz Xtal. 
 For using bootloader we need to set correct fusebit like above,
-========================
+
 gelatino16
 low_fuses=0xFF
 high_fuses=0xD8
-========================
+
 gelatino32
 low_fuses=0xFF
 high_fuses=0xDA
-========================
+
 gelatino128
 low_fuses=0xFF
 high_fuses=0xCA
 extended_fuses=0xFF
-========================
+
 
 Then burn correct bootloader in the bootloader Folder.
 If you have questions to ask me personally, feel free to contact me via email or maybe via hangout if i'm online
