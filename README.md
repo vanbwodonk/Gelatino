@@ -20,7 +20,11 @@ For using bootloader we need to set correct fusebit like above,
 
 ## Gelatino Pin ##
 
+ATmega16/ATmega32
 ![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
+
+ATmega128 
+![alt tag](http://img69.imageshack.us/img69/1520/tanh.jpg)
 
 ## Fusebit Setting ##
 
