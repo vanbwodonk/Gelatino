@@ -5,29 +5,58 @@ Other Arduino Compatible Project
 Gelatino is Arduino Compatible development kit, Free and Open Source. 
 Gelatino built from another AVR 8-bit besides Arduino mostly used. 
 Gelatino now is suported ATmega128 ,ATmega16 and ATmega32
-
-http://code.google.com/p/gelatino/
+Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.0.5/hardware
 
 ## Variants ##
 
 Gelatino have 3 variants:
-- Gelatino16 with ATmega16 ( http://code.google.com/p/gelatino/wiki/Gelatino16 )
-- Gelatino32 with ATmega32 ( http://code.google.com/p/gelatino/wiki/Gelatino32 )
-- Gelatino128 with ATmega128 ( http://code.google.com/p/gelatino/wiki/Gelatino128 ) 
-
-Gelatino's schematic is like other arduino standard. Gelatino using 16 Mhz Xtal. 
-For using bootloader we need to set correct fusebit like above,
+- Gelatino16 with ATmega16
+- Gelatino32 with ATmega32
+- Gelatino128 with ATmega128
 
 ## Gelatino Pin ##
 
 ATmega16/ATmega32
 
 ![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
+PIN |Gelatino PIN 	|Special Pin
+:-- | :--: 			| --:
+PB0	|0				|
+PB1	|1				|
+PB2	|2				|
+PB3	|3				|PWM|
+PB4	|4				|SPI_SS|
+PB5	|5				|SPI_MOSI|
+PB6	|6				|SPI_MISO|
+PB7	|7				|SPI_SCK|
+PD0	|8				|USART_RX|
+PD1	|9				|USART_TX|
+PD2	|10				|
+PD3	|11				|
+PD4	|12				|PWM|
+PD5	|13				|PWM|
+PD6	|14				|
+PD7	|15				|PWM
+PC0	|16				|I2C_SCL
+PC1	|17				|I2C_SDA
+PC2	|18				|
+PC3	|19				|
+PC4	|20				|
+PC5	|21				|
+PC6	|22				|
+PC7	|23				|
+PA7	|24/A7			|ADC
+PA6	|25/A6			|ADC
+PA5	|26/A5			|ADC
+PA4	|27/A4			|ADC
+PA3	|28/A3			|ADC
+PA2	|29/A2			|ADC
+PA1	|30/A1			|ADC
+PA0	|31/A0			|ADC
 
 ATmega128
 
 ![alt tag](http://img69.imageshack.us/img69/1520/tanh.jpg)
-
 PIN	|Gelatino PIN	|Special Pin
 :-- | :--: 			| --:
 PE0	|0				|USART0_RX
@@ -86,19 +115,18 @@ PF7	|52/A7			|ADC
 
 ## Fusebit Setting ##
 
+Gelatino's schematic is like arduino duemilanove, upload firmware via FTDI. Gelatino using 16 Mhz Xtal. 
+For using bootloader we need to set correct fusebit like above,
 Gelatino16
 - low_fuses=0xFF
 - high_fuses=0xD8
-
 Gelatino32
 - low_fuses=0xFF
 - high_fuses=0xDA
-
 Gelatino128
 - low_fuses=0xFF
 - high_fuses=0xCA
 - extended_fuses=0xFF
-
 
 Then burn correct bootloader in the bootloader Folder.
 
