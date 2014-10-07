@@ -18,6 +18,10 @@ Gelatino have 3 variants:
 Gelatino's schematic is like other arduino standard. Gelatino using 16 Mhz Xtal. 
 For using bootloader we need to set correct fusebit like above,
 
+## Gelatino Pin ##
+
+![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
+
 ## Fusebit Setting ##
 
 Gelatino16
@@ -35,6 +39,8 @@ Gelatino128
 
 
 Then burn correct bootloader in the bootloader Folder.
-If you have questions to ask me personally, feel free to contact me via email or maybe via hangout if i'm online
 
+## Contact me ##
+
+If you have questions to ask me personally, feel free to contact me via email or maybe via hangout if i'm online
 arif.pens@gmail.com
