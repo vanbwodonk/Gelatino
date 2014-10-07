@@ -14,9 +14,7 @@ Gelatino have 3 variants:
 - Gelatino32 with ATmega32
 - Gelatino128 with ATmega128
 
-## Gelatino Pin ##
-
-ATmega16/ATmega32
+## Gelatino ATmega16/ATmega32 Pinlist ##
 
 ![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
 
@@ -55,7 +53,7 @@ PA2	|29/A2			|ADC
 PA1	|30/A1			|ADC
 PA0	|31/A0			|ADC
 
-ATmega128
+## Gelatino ATmega128 Pinlist ##
 
 ![alt tag](http://img69.imageshack.us/img69/1520/tanh.jpg)
 
