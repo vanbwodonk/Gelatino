@@ -119,12 +119,15 @@ PF7	|52/A7			|ADC
 
 Gelatino's schematic is like arduino duemilanove, upload firmware via FTDI. Gelatino using 16 Mhz Xtal. 
 For using bootloader we need to set correct fusebit like above,
+
 Gelatino16
 - low_fuses=0xFF
 - high_fuses=0xD8
+
 Gelatino32
 - low_fuses=0xFF
 - high_fuses=0xDA
+
 Gelatino128
 - low_fuses=0xFF
 - high_fuses=0xCA
