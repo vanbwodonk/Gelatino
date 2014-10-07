@@ -17,9 +17,8 @@ Gelatino have 3 variants:
 ## Gelatino Pin ##
 
 ATmega16/ATmega32
-
 ![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
-PIN |Gelatino PIN 	|Special Pin
+PIN	|Gelatino PIN	|Special Pin
 :-- | :--: 			| --:
 PB0	|0				|
 PB1	|1				|
@@ -55,7 +54,6 @@ PA1	|30/A1			|ADC
 PA0	|31/A0			|ADC
 
 ATmega128
-
 ![alt tag](http://img69.imageshack.us/img69/1520/tanh.jpg)
 PIN	|Gelatino PIN	|Special Pin
 :-- | :--: 			| --:
