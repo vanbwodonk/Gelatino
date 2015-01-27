@@ -5,7 +5,7 @@ Other Arduino Compatible Project
 Gelatino is Arduino Compatible development kit, Free and Open Source. 
 Gelatino built from another AVR 8-bit besides Arduino mostly used. 
 Gelatino now is suported ATmega128 ,ATmega16 and ATmega32
-Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.0.5/hardware
+Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.0.6/hardware
 
 ## Variants ##
 

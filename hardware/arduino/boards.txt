@@ -265,7 +265,7 @@ ethernet.bootloader.file=optiboot_atmega328.hex
 ethernet.bootloader.unlock_bits=0x3F
 ethernet.bootloader.lock_bits=0x0F
 
-ethernet.build.variant=standard
+ethernet.build.variant=ethernet
 ethernet.build.mcu=atmega328p
 ethernet.build.f_cpu=16000000L
 ethernet.build.core=arduino
@@ -565,6 +565,7 @@ robotMotor.build.pid=0x8039
 robotMotor.build.core=robot
 robotMotor.build.variant=robot_motor
 
+
 ##############################################################
 
 gelatino16.name=gelatino-16 w/ ATmega16
@@ -627,5 +628,3 @@ gelatino128.build.mcu=atmega128
 gelatino128.build.f_cpu=16000000L
 gelatino128.build.core=gelatino
 gelatino128.build.variant=gelatino128
-
-
