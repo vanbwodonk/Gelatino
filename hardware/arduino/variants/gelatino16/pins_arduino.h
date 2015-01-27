@@ -47,8 +47,8 @@ static const uint8_t A2 = 29;
 static const uint8_t A3 = 28;
 static const uint8_t A4 = 27;
 static const uint8_t A5 = 26;
-static const uint8_t A6 = 24;
-static const uint8_t A7 = 23;
+static const uint8_t A6 = 25;
+static const uint8_t A7 = 24;
 
 
 #ifdef ARDUINO_MAIN
