@@ -169,8 +169,8 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER	, // PD 1 **  9 ** USART_TX
 	NOT_ON_TIMER	, // PD 2 ** 10 ** D10
 	NOT_ON_TIMER	, // PD 3 ** 11 ** D11
-	TIMER1A			, // PD 4 ** 12 ** PWM1
-	TIMER1B			, // PD 5 ** 13 ** PWM2
+	TIMER1B			, // PD 4 ** 12 ** PWM1
+	TIMER1A			, // PD 5 ** 13 ** PWM2
 	NOT_ON_TIMER	, // PD 6 ** 14 ** D14
 	TIMER2			, // PD 7 ** 15 ** PWM3
 	NOT_ON_TIMER	, // PC 0 ** 16 ** I2C_SCL

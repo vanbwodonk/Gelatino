@@ -111,10 +111,10 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PE	, // PE 1 ->  1 -> USART0_TX	
 	PE	, // PE 2 ->  2 
 	PE	, // PE 3 ->  3 -> PWM3
-	PE	, // PE 4 ->  4 -> PWM4
-	PE	, // PE 5 ->  5 -> PWM5
-	PE	, // PE 6 ->  6 
-	PE	, // PE 7 ->  7 
+	PE	, // PE 4 ->  4 -> PWM4	-> INT4
+	PE	, // PE 5 ->  5 -> PWM5	-> INT5
+	PE	, // PE 6 ->  6 		-> INT6		
+	PE	, // PE 7 ->  7 		-> INT7
 	PB	, // PB 0 ->  8 -> SPI_SS
 	PB	, // PB 1 ->  9 -> SPI_SCK
 	PB	, // PB 2 -> 10 -> SPI_MOSI
@@ -125,10 +125,10 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PB	, // PB 7 -> 15 -> PWM15	
 	PG	, // PG 3 -> 16
 	PG	, // PG 4 -> 17 
-	PD	, // PD 0 -> 18 -> I2C_SCL
-	PD	, // PD 1 -> 19 -> I2C_SDA
-	PD	, // PD 2 -> 20 -> USART1_RX
-	PD	, // PD 3 -> 21 -> USART2_TX
+	PD	, // PD 0 -> 18 -> I2C_SCL	-> INT0
+	PD	, // PD 1 -> 19 -> I2C_SDA	-> INT1		
+	PD	, // PD 2 -> 20 -> USART1_RX-> INT2
+	PD	, // PD 3 -> 21 -> USART2_TX-> INT3
 	PD	, // PD 4 -> 22 
 	PD	, // PD 5 -> 23 
 	PD	, // PD 6 -> 24 
