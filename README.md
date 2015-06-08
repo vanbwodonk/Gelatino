@@ -18,7 +18,7 @@ Gelatino have 3 variants:
 
 ![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
 
-PIN	|Gelatino PIN	|Special Pin
+PIN	|Gelatino PIN	|Peripheral Pin
 :-- | :--: 			| --:
 PB0	|0				|
 PB1	|1				|
@@ -57,7 +57,7 @@ PA0	|31/A0			|ADC
 
 ![alt tag](http://img69.imageshack.us/img69/1520/tanh.jpg)
 
-PIN	|Gelatino PIN	|Special Pin
+PIN	|Gelatino PIN	|Peripheral Pin
 :-- | :--: 			| --:
 PE0	|0				|USART0_RX
 PE1	|1				|USART0_TX
