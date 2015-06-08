@@ -565,7 +565,6 @@ robotMotor.build.pid=0x8039
 robotMotor.build.core=robot
 robotMotor.build.variant=robot_motor
 
-
 ##############################################################
 
 gelatino16.name=gelatino-16 w/ ATmega16
