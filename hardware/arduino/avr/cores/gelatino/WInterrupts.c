@@ -72,27 +72,27 @@ void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode) {
         EIMSK |= (1<<INT6);
         break;
 #elif defined(EICRA) && defined(EICRB) && defined(EIMSK)
-    case 0:
+    case 2:
       EICRA = (EICRA & ~((1 << ISC00) | (1 << ISC01))) | (mode << ISC00);
       EIMSK |= (1 << INT0);
       break;
-    case 1:
+    case 3:
       EICRA = (EICRA & ~((1 << ISC10) | (1 << ISC11))) | (mode << ISC10);
       EIMSK |= (1 << INT1);
       break;
-    case 2:
+    case 4:
       EICRA = (EICRA & ~((1 << ISC20) | (1 << ISC21))) | (mode << ISC20);
       EIMSK |= (1 << INT2);
       break;
-    case 3:
+    case 5:
       EICRA = (EICRA & ~((1 << ISC30) | (1 << ISC31))) | (mode << ISC30);
       EIMSK |= (1 << INT3);
       break;
-    case 4:
+    case 0:
       EICRB = (EICRB & ~((1 << ISC40) | (1 << ISC41))) | (mode << ISC40);
       EIMSK |= (1 << INT4);
       break;
-    case 5:
+    case 1:
       EICRB = (EICRB & ~((1 << ISC50) | (1 << ISC51))) | (mode << ISC50);
       EIMSK |= (1 << INT5);
       break;
@@ -175,22 +175,22 @@ void detachInterrupt(uint8_t interruptNum) {
         EIMSK &= ~(1<<INT6);
         break;	
 #elif defined(EICRA) && defined(EICRB) && defined(EIMSK)
-    case 0:
+    case 2:
       EIMSK &= ~(1 << INT0);
       break;
-    case 1:
+    case 3:
       EIMSK &= ~(1 << INT1);
       break;
-    case 2:
+    case 4:
       EIMSK &= ~(1 << INT2);
       break;
-    case 3:
+    case 5:
       EIMSK &= ~(1 << INT3);
       break;
-    case 4:
+    case 0:
       EIMSK &= ~(1 << INT4);
       break;
-    case 5:
+    case 1:
       EIMSK &= ~(1 << INT5);
       break;
     case 6:
@@ -265,33 +265,33 @@ ISR(INT6_vect) {
 #elif defined(EICRA) && defined(EICRB)
 
 ISR(INT0_vect) {
-  if(intFunc[EXTERNAL_INT_0])
-    intFunc[EXTERNAL_INT_0]();
-}
-
-ISR(INT1_vect) {
-  if(intFunc[EXTERNAL_INT_1])
-    intFunc[EXTERNAL_INT_1]();
-}
-
-ISR(INT2_vect) {
   if(intFunc[EXTERNAL_INT_2])
     intFunc[EXTERNAL_INT_2]();
 }
 
-ISR(INT3_vect) {
+ISR(INT1_vect) {
   if(intFunc[EXTERNAL_INT_3])
     intFunc[EXTERNAL_INT_3]();
 }
 
-ISR(INT4_vect) {
+ISR(INT2_vect) {
   if(intFunc[EXTERNAL_INT_4])
     intFunc[EXTERNAL_INT_4]();
 }
 
-ISR(INT5_vect) {
+ISR(INT3_vect) {
   if(intFunc[EXTERNAL_INT_5])
     intFunc[EXTERNAL_INT_5]();
+}
+
+ISR(INT4_vect) {
+  if(intFunc[EXTERNAL_INT_0])
+    intFunc[EXTERNAL_INT_0]();
+}
+
+ISR(INT5_vect) {
+  if(intFunc[EXTERNAL_INT_1])
+    intFunc[EXTERNAL_INT_1]();
 }
 
 ISR(INT6_vect) {

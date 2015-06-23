@@ -32,6 +32,60 @@
 #define analogInputToDigitalPin(p)  ((p < 8) ? (p) + 45 : -1)
 #define digitalPinHasPWM(p)         (((p) >= 3 && (p) <= 6) || ((p) >= 12 && (p)<= 15))
 
+#define PE_0  0	
+#define PE_1  1
+#define PE_2  2
+#define PE_3  3
+#define PE_4  4
+#define PE_5  5
+#define PE_6  6	
+#define PE_7  7
+#define PB_0  8
+#define PB_1  9
+#define PB_2 10
+#define PB_3 11
+#define PB_4 12
+#define PB_5 13
+#define PB_6 14
+#define PB_7 15
+#define PG_3 16
+#define PG_4 17 
+#define PD_0 18
+#define PD_1 19	
+#define PD_2 20
+#define PD_3 21
+#define PD_4 22 
+#define PD_5 23 
+#define PD_6 24 
+#define PD_7 25 
+#define PG_0 26 
+#define PG_1 27 
+#define PC_0 28 
+#define PC_1 29 
+#define PC_2 30 
+#define PC_3 31 
+#define PC_4 32 
+#define PC_5 33 
+#define PC_6 34 
+#define PC_7 35 
+#define PG_2 36 
+#define PA_7 37 
+#define PA_6 38 
+#define PA_5 39 
+#define PA_4 40 
+#define PA_3 41 
+#define PA_2 42 
+#define PA_1 43
+#define PA_0 44 
+#define PF_0 45 
+#define PF_1 46 
+#define PF_2 47 
+#define PF_3 48 
+#define PF_4 49 
+#define PF_5 50 
+#define PF_6 51
+#define PF_7 52
+
 static const uint8_t SS   = 8;
 static const uint8_t MOSI = 10;
 static const uint8_t MISO = 11;

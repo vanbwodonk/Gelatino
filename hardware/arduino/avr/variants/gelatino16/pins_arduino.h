@@ -32,6 +32,39 @@
 #define analogInputToDigitalPin(p)  ((p < 8) ? 31 - (p) : -1)
 #define digitalPinHasPWM(p)         ((p) == 3  || (p) == 12 || (p) == 13  || (p) == 15 )//(((p) >= 3 && (p) <= 6) || ((p) >= 12 && (p)<= 15))
 
+#define PB_0  0 //D0
+#define PB_1  1 //D1
+#define PB_2  2 //D2
+#define PB_3  3 //PWM0
+#define PB_4  4 //SPI_SS
+#define PB_5  5 //SPI_MOSI
+#define PB_6  6 //SPI_MISO
+#define PB_7  7 //SPI_SCK	
+#define PD_0  8 //USART_RX
+#define PD_1  9 //USART_TX
+#define PD_2 10 //D10
+#define PD_3 11 //D11
+#define PD_4 12 //PWM1
+#define PD_5 13 //PWM2
+#define PD_6 14 //D14
+#define PD_7 15 //PWM3
+#define PC_0 16 //I2C_SCL
+#define PC_1 17 //I2C_SDA
+#define PC_2 18 //D18
+#define PC_3 19 //D19
+#define PC_4 20 //D20
+#define PC_5 21 //D21
+#define PC_6 22 //D22
+#define PC_7 23 //D23
+#define PA_7 24 //D24
+#define PA_6 25 //D25
+#define PA_5 26 //D26
+#define PA_4 27 //D27
+#define PA_3 28 //D28
+#define PA_2 29 //D29
+#define PA_1 30 //D30
+#define PA_0 31 //D31
+
 static const uint8_t SS   = 4;
 static const uint8_t MOSI = 5;
 static const uint8_t MISO = 6;
