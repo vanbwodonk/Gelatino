@@ -883,3 +883,26 @@ gelatino128.build.mcu=atmega128
 gelatino128.build.f_cpu=16000000L
 gelatino128.build.core=gelatino
 gelatino128.build.variant=gelatino128
+
+##############################################################
+
+gelatino162.name=gelatino-162 w/ ATmega162
+
+gelatino162.upload.tool=avrdude
+gelatino162.upload.protocol=arduino
+gelatino162.upload.maximum_size=14336
+gelatino162.upload.maximum_data_size=1024
+gelatino162.upload.speed=57600
+
+gelatino162.bootloader.low_fuses=0xFF
+gelatino162.bootloader.high_fuses=0xD8
+gelatino162.bootloader.extended_fuses=0xFB
+gelatino162.bootloader.path=optiboot
+gelatino162.bootloader.file=optiboot_atmega162.hex
+gelatino162.bootloader.unlock_bits=0x3F
+gelatino162.bootloader.lock_bits=0x0F
+
+gelatino162.build.mcu=atmega162
+gelatino162.build.f_cpu=16000000L
+gelatino162.build.core=gelatino
+gelatino162.build.variant=gelatino162
