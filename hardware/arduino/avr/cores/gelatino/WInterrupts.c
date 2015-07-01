@@ -223,7 +223,7 @@ void detachInterrupt(uint8_t interruptNum) {
       #warning detachInterrupt may need some more work for this cpu (case 1)
     #endif
       break;
-	        
+        
     case 2:
     #if defined(EIMSK) && defined(INT2)
       EIMSK &= ~(1 << INT2);
@@ -249,87 +249,87 @@ void attachInterruptTwi(void (*userFunc)(void) ) {
 */
 
 #if defined(__AVR_ATmega32U4__)
-ISR(INT0_vect) {
+__attribute__ ((weak)) ISR(INT0_vect) {
 	if(intFunc[EXTERNAL_INT_0])
 		intFunc[EXTERNAL_INT_0]();
 }
 
-ISR(INT1_vect) {
+__attribute__ ((weak)) ISR(INT1_vect) {
 	if(intFunc[EXTERNAL_INT_1])
 		intFunc[EXTERNAL_INT_1]();
 }
 
-ISR(INT2_vect) {
+__attribute__ ((weak)) ISR(INT2_vect) {
     if(intFunc[EXTERNAL_INT_2])
 		intFunc[EXTERNAL_INT_2]();
 }
 
-ISR(INT3_vect) {
+__attribute__ ((weak)) ISR(INT3_vect) {
     if(intFunc[EXTERNAL_INT_3])
 		intFunc[EXTERNAL_INT_3]();
 }
 
-ISR(INT6_vect) {
+__attribute__ ((weak)) ISR(INT6_vect) {
     if(intFunc[EXTERNAL_INT_4])
 		intFunc[EXTERNAL_INT_4]();
 }
 
 #elif defined(EICRA) && defined(EICRB)
 
-ISR(INT0_vect) {
+__attribute__ ((weak)) ISR(INT0_vect) {
   if(intFunc[EXTERNAL_INT_0])
     intFunc[EXTERNAL_INT_0]();
 }
 
-ISR(INT1_vect) {
+__attribute__ ((weak)) ISR(INT1_vect) {
   if(intFunc[EXTERNAL_INT_1])
     intFunc[EXTERNAL_INT_1]();
 }
 
-ISR(INT2_vect) {
+__attribute__ ((weak)) ISR(INT2_vect) {
   if(intFunc[EXTERNAL_INT_2])
     intFunc[EXTERNAL_INT_2]();
 }
 
-ISR(INT3_vect) {
+__attribute__ ((weak)) ISR(INT3_vect) {
   if(intFunc[EXTERNAL_INT_3])
     intFunc[EXTERNAL_INT_3]();
 }
 
-ISR(INT4_vect) {
+__attribute__ ((weak)) ISR(INT4_vect) {
   if(intFunc[EXTERNAL_INT_4])
     intFunc[EXTERNAL_INT_4]();
 }
 
-ISR(INT5_vect) {
+__attribute__ ((weak)) ISR(INT5_vect) {
   if(intFunc[EXTERNAL_INT_5])
     intFunc[EXTERNAL_INT_5]();
 }
 
-ISR(INT6_vect) {
+__attribute__ ((weak)) ISR(INT6_vect) {
   if(intFunc[EXTERNAL_INT_6])
     intFunc[EXTERNAL_INT_6]();
 }
 
-ISR(INT7_vect) {
+__attribute__ ((weak)) ISR(INT7_vect) {
   if(intFunc[EXTERNAL_INT_7])
     intFunc[EXTERNAL_INT_7]();
 }
 
 #else
 
-ISR(INT0_vect) {
+__attribute__ ((weak)) ISR(INT0_vect) {
   if(intFunc[EXTERNAL_INT_0])
     intFunc[EXTERNAL_INT_0]();
 }
 
-ISR(INT1_vect) {
+__attribute__ ((weak)) ISR(INT1_vect) {
   if(intFunc[EXTERNAL_INT_1])
     intFunc[EXTERNAL_INT_1]();
 }
 
 #if defined(EICRA) && defined(ISC20)
-ISR(INT2_vect) {
+__attribute__ ((weak)) ISR(INT2_vect) {
   if(intFunc[EXTERNAL_INT_2])
     intFunc[EXTERNAL_INT_2]();
 }
