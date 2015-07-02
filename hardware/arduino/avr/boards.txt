@@ -825,6 +825,7 @@ gelatino16.upload.maximum_size=14336
 gelatino16.upload.maximum_data_size=1024
 gelatino16.upload.speed=57600
 
+gelatino16.bootloader.tool=avrdude
 gelatino16.bootloader.low_fuses=0xFF
 gelatino16.bootloader.high_fuses=0xD8
 gelatino16.bootloader.extended_fuses=0x00
@@ -848,6 +849,7 @@ gelatino32.upload.maximum_size=30720
 gelatino32.upload.maximum_data_size=2048
 gelatino32.upload.speed=57600
 
+gelatino32.bootloader.tool=avrdude
 gelatino32.bootloader.low_fuses=0xFF
 gelatino32.bootloader.high_fuses=0xDA
 gelatino32.bootloader.extended_fuses=0xFF
@@ -871,6 +873,7 @@ gelatino128.upload.maximum_size=126976
 gelatino128.upload.maximum_data_size=4096
 gelatino128.upload.speed=57600
 
+gelatino128.bootloader.tool=avrdude
 gelatino128.bootloader.low_fuses=0xFF
 gelatino128.bootloader.high_fuses=0xCA
 gelatino128.bootloader.extended_fuses=0xFF
@@ -894,6 +897,7 @@ gelatino162.upload.maximum_size=14336
 gelatino162.upload.maximum_data_size=1024
 gelatino162.upload.speed=57600
 
+gelatino162.bootloader.tool=avrdude
 gelatino162.bootloader.low_fuses=0xFF
 gelatino162.bootloader.high_fuses=0xD8
 gelatino162.bootloader.extended_fuses=0xFB
