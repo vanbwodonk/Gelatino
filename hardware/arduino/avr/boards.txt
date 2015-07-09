@@ -821,16 +821,14 @@ gelatino16.name=gelatino-16 w/ ATmega16
 
 gelatino16.upload.tool=avrdude
 gelatino16.upload.protocol=arduino
-gelatino16.upload.maximum_size=14336
+gelatino16.upload.maximum_size=15872
 gelatino16.upload.maximum_data_size=1024
-gelatino16.upload.speed=57600
+gelatino16.upload.speed=115200
 
-gelatino16.bootloader.tool=avrdude
+gelatino16.bootloader.tool=avrdude1
 gelatino16.bootloader.low_fuses=0xFF
-gelatino16.bootloader.high_fuses=0xD8
-gelatino16.bootloader.extended_fuses=0x00
-gelatino16.bootloader.path=atmega
-gelatino16.bootloader.file=ATmegaBOOT_168_gelatino16.hex
+gelatino16.bootloader.high_fuses=0xDC
+gelatino16.bootloader.file=optiboot/optiboot_atmega16.hex
 gelatino16.bootloader.unlock_bits=0x3F
 gelatino16.bootloader.lock_bits=0x0F
 
@@ -845,16 +843,15 @@ gelatino32.name=gelatino-32 w/ ATmega32
 
 gelatino32.upload.tool=avrdude
 gelatino32.upload.protocol=arduino
-gelatino32.upload.maximum_size=30720
+gelatino32.upload.maximum_size=32256
 gelatino32.upload.maximum_data_size=2048
-gelatino32.upload.speed=57600
+gelatino32.upload.speed=115200
 
-gelatino32.bootloader.tool=avrdude
+gelatino32.bootloader.tool=avrdude1
 gelatino32.bootloader.low_fuses=0xFF
-gelatino32.bootloader.high_fuses=0xDA
+gelatino32.bootloader.high_fuses=0xDE
 gelatino32.bootloader.extended_fuses=0xFF
-gelatino32.bootloader.path=atmega
-gelatino32.bootloader.file=ATmegaBOOT_168_gelatino32.hex
+gelatino32.bootloader.file=optiboot/optiboot_atmega32.hex
 gelatino32.bootloader.unlock_bits=0x3F
 gelatino32.bootloader.lock_bits=0x0F
 
@@ -869,16 +866,15 @@ gelatino128.name=Gelatino-128 w/ ATmega128
 
 gelatino128.upload.tool=avrdude
 gelatino128.upload.protocol=arduino
-gelatino128.upload.maximum_size=126976
+gelatino128.upload.maximum_size=130048
 gelatino128.upload.maximum_data_size=4096
-gelatino128.upload.speed=57600
+gelatino128.upload.speed=115200
 
 gelatino128.bootloader.tool=avrdude
 gelatino128.bootloader.low_fuses=0xFF
-gelatino128.bootloader.high_fuses=0xCA
+gelatino128.bootloader.high_fuses=0xDE
 gelatino128.bootloader.extended_fuses=0xFF
-gelatino128.bootloader.path=atmega
-gelatino128.bootloader.file=ATmegaBOOT_168_gelatino128.hex
+gelatino128.bootloader.file=optiboot/optiboot_atmega128.hex
 gelatino128.bootloader.unlock_bits=0x3F
 gelatino128.bootloader.lock_bits=0x0F
 
@@ -901,8 +897,7 @@ gelatino162.bootloader.tool=avrdude
 gelatino162.bootloader.low_fuses=0xFF
 gelatino162.bootloader.high_fuses=0xD8
 gelatino162.bootloader.extended_fuses=0xFB
-gelatino162.bootloader.path=optiboot
-gelatino162.bootloader.file=optiboot_atmega162.hex
+gelatino162.bootloader.file=optiboot/optiboot_atmega162.hex
 gelatino162.bootloader.unlock_bits=0x3F
 gelatino162.bootloader.lock_bits=0x0F
 
