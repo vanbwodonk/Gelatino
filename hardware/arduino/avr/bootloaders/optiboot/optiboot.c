@@ -460,7 +460,7 @@ int main(void) {
   // If not, uncomment the following instructions:
   // cli();
   asm volatile ("clr __zero_reg__");
-#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega128__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__)
   SP=RAMEND;  // This is done by hardware reset
 #endif
 
@@ -707,7 +707,7 @@ uint8_t getch(void) {
   uint8_t ch;
 
 #ifdef LED_DATA_FLASH
-#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega128__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__)
   LED_PORT ^= _BV(LED);
 #else
   LED_PIN |= _BV(LED);
@@ -758,7 +758,7 @@ uint8_t getch(void) {
 #endif
 
 #ifdef LED_DATA_FLASH
-#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega128__)
+#if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__)
   LED_PORT ^= _BV(LED);
 #else
   LED_PIN |= _BV(LED);
@@ -807,7 +807,7 @@ void flash_led(uint8_t count) {
     TCNT1 = -(F_CPU/(1024*16));
     TIFR1 = _BV(TOV1);
     while(!(TIFR1 & _BV(TOV1)));
-#if defined(__AVR_ATmega8__)  || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega128__)
+#if defined(__AVR_ATmega8__)  || defined (__AVR_ATmega32__) || defined (__AVR_ATmega16__) || defined (__AVR_ATmega162__) || defined (__AVR_ATmega128__)
     LED_PORT ^= _BV(LED);
 #else
     LED_PIN |= _BV(LED);

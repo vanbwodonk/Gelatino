@@ -105,6 +105,26 @@ atmega16_isp: LFUSE ?= FF
 atmega16_isp: isp
 
 #
+# ATmega16
+#
+atmega162: TARGET = atmega162
+atmega162: MCU_TARGET = atmega162
+atmega162: CFLAGS += $(COMMON_OPTIONS)
+atmega162: AVR_FREQ ?= 16000000L
+atmega162: LDSECTIONS  = -Wl,--section-start=.text=0x3e00 -Wl,--section-start=.version=0x3ffe
+atmega162: $(PROGRAM)_atmega162.hex
+atmega162: $(PROGRAM)_atmega162.lst
+
+atmega162_isp: atmega162
+atmega162_isp: TARGET = atmega162
+atmega162_isp: MCU_TARGET = atmega162
+# No OCD or JTAG, SPIEN, CKOPT (for full swing xtal), Bootsize=512B
+atmega162_isp: HFUSE ?= DC
+# 2.7V brownout, 16MHz Xtal, 16KCK/14CK+65ms
+atmega162_isp: LFUSE ?= FF
+atmega162_isp: isp
+
+#
 # ATtiny84
 #
 attiny84: TARGET = attiny84
