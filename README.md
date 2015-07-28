@@ -1,22 +1,20 @@
 # Gelatino #
 
-Other Arduino Compatible Project
+Other Arduino Compatible Core Project
 
-Gelatino is Arduino Compatible development kit, Free and Open Source. 
-Gelatino built from another AVR 8-bit besides Arduino mostly used. 
-Gelatino now is suported ATmega128 ,ATmega16 and ATmega32
+Gelatino is Arduino core for another AVR 8-bit besides Arduino mostly used. 
+Gelatino now is suported ATmega128 ,ATmega16, ,ATmega162 and ATmega32
 Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.6.4/hardware
 
 ## Variants ##
 
 Gelatino have 3 variants:
-- Gelatino16 with ATmega16
-- Gelatino32 with ATmega32
+- Gelatino16  with ATmega16
+- Gelatino162 with ATmega162
+- Gelatino32  with ATmega32
 - Gelatino128 with ATmega128
 
 ## Gelatino ATmega16/ATmega32 Pinlist ##
-
-![alt tag](http://imageshack.us/a/img856/2953/fn6o.jpg)
 
 PIN	|Gelatino PIN	|Peripheral Pin
 :-- | :--: 			| --:
@@ -54,8 +52,6 @@ PA1	|30/A1			|ADC
 PA0	|31/A0			|ADC
 
 ## Gelatino ATmega128 Pinlist ##
-
-![alt tag](http://img69.imageshack.us/img69/1520/tanh.jpg)
 
 PIN	|Gelatino PIN	|Peripheral Pin
 :-- | :--: 			| --:
