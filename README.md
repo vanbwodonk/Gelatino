@@ -114,4 +114,4 @@ PF7	|52/A7			|ADC
 ## Contact me ##
 
 If you have questions to ask me personally, feel free to contact me via email or maybe via hangout if i'm online
-arif.pens@gmail.com
+arif.pens@gmail.com 
