@@ -4,7 +4,9 @@ Other Arduino Compatible Core Project
 
 Gelatino is Arduino core for another AVR 8-bit besides Arduino mostly used. 
 Gelatino now is suported ATmega128 ,ATmega16, ,ATmega162 and ATmega32
-Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.6.4/hardware
+Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.6.x/hardware
+
+*Last tested on arduino-1.6.5-r2
 
 ## Variants ##
 
