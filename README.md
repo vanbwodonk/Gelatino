@@ -10,7 +10,7 @@ Download this patch and copy hardware folder, paste and overwrite in /Arduino 1.
 
 ## Variants ##
 
-Gelatino have 3 variants:
+Gelatino have 4 variants:
 - Gelatino16  with ATmega16
 - Gelatino162 with ATmega162
 - Gelatino32  with ATmega32
