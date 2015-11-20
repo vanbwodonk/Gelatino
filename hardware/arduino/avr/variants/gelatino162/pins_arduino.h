@@ -85,10 +85,46 @@ const static uint8_t LED_BUILTIN = 13;
 //                      +----+
 //
 
-
 // these arrays map port names (e.g. port B) to the
 // appropriate addresses for various functions (e.g. reading
 // and writing)
+
+#define PD_0 0
+#define PD_1 1
+#define PD_2 2
+#define PD_3 3
+#define PD_4 5
+#define PD_5 6
+#define PD_6 4
+#define PD_7 7
+#define PB_0 8
+#define PB_1 9
+#define PB_2 19
+#define PB_3 18
+#define PB_4 10
+#define PB_5 11
+#define PB_6 12
+#define PB_7 13
+#define PA_0 14
+#define PA_1 15
+#define PA_2 16
+#define PA_3 17
+#define PA_4 31
+#define PA_5 32
+#define PA_6 33
+#define PA_7 34
+#define PC_0 20
+#define PC_1 21
+#define PC_2 22
+#define PC_3 23
+#define PC_4 24
+#define PC_5 25
+#define PC_6 26
+#define PC_7 27
+#define PE_0 28
+#define PE_1 29
+#define PE_2 30
+
 const uint16_t PROGMEM port_to_mode_PGM[] = {
 	NOT_A_PORT,
 	(uint16_t) &DDRA,
