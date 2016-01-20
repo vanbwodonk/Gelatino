@@ -16,7 +16,7 @@ Gelatino have 4 variants:
 - Gelatino32  with ATmega32
 - Gelatino128 with ATmega128
 
-## Gelatino ATmega16/ATmega32 Pinlist ##
+## Gelatino Pinlist ##
 
 See pinlist on arduino variant folder (hardware/arduino/avr/variants).
 Now have new macros same with AVR pin, no need to remember what number and where is digital pin. Example below,
