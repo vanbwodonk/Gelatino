@@ -834,7 +834,7 @@ gelatino16.bootloader.lock_bits=0x0F
 
 gelatino16.build.mcu=atmega16
 gelatino16.build.f_cpu=16000000L
-gelatino16.build.core=gelatino
+gelatino16.build.core=gelatino16
 gelatino16.build.variant=gelatino16
 
 ##############################################################
@@ -857,7 +857,7 @@ gelatino32.bootloader.lock_bits=0x0F
 
 gelatino32.build.mcu=atmega32
 gelatino32.build.f_cpu=16000000L
-gelatino32.build.core=gelatino
+gelatino32.build.core=gelatino16
 gelatino32.build.variant=gelatino16
 
 ##############################################################
@@ -880,7 +880,7 @@ gelatino128.bootloader.lock_bits=0x0F
 
 gelatino128.build.mcu=atmega128
 gelatino128.build.f_cpu=16000000L
-gelatino128.build.core=gelatino
+gelatino128.build.core=gelatino128
 gelatino128.build.variant=gelatino128
 
 ##############################################################
@@ -891,7 +891,7 @@ gelatino162.upload.tool=avrdude
 gelatino162.upload.protocol=arduino
 gelatino162.upload.maximum_size=14336
 gelatino162.upload.maximum_data_size=1024
-gelatino162.upload.speed=57600
+gelatino162.upload.speed=115200
 
 gelatino162.bootloader.tool=avrdude
 gelatino162.bootloader.low_fuses=0xFF
@@ -903,5 +903,5 @@ gelatino162.bootloader.lock_bits=0x0F
 
 gelatino162.build.mcu=atmega162
 gelatino162.build.f_cpu=16000000L
-gelatino162.build.core=gelatino
+gelatino162.build.core=gelatino162
 gelatino162.build.variant=gelatino162
