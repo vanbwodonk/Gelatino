@@ -29,7 +29,7 @@ digitalWrite(PB_5, HIGH); //set PinB.5 High
 This installation method requires Arduino IDE version 1.6.4 or greater.
 * Open the Arduino IDE.
 * Open the **File > Preferences** menu item.
-* Enter the following URL in **Additional Boards Manager URLs**: '''https://raw.githubusercontent.com/vanbwodonk/Gelatino.github.io/master/package_Gelatino_1.6.x_index.json'''
+* Enter the following URL in **Additional Boards Manager URLs**: 'https://raw.githubusercontent.com/vanbwodonk/Gelatino.github.io/master/package_Gelatino_1.6.x_index.json'
 * Open the **Tools > Board > Boards Manager...** menu item.
 * Wait for the platform indexes to finish downloading.
 * Scroll down until you see the **Gelatino** entry and click on it.
