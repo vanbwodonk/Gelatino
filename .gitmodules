@@ -1,0 +1,3 @@
+[submodule "libraries/AltSoftSerial"]
+	path = libraries/AltSoftSerial
+	url = https://github.com/vanbwodonk/AltSoftSerial.git
