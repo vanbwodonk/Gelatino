@@ -1,0 +1,69 @@
+#
+# ATmega32
+#
+atmega32: TARGET = atmega32
+atmega32: MCU_TARGET = atmega32
+atmega32: CFLAGS += $(COMMON_OPTIONS)
+atmega32: AVR_FREQ ?= 8000000L
+atmega32: LDSECTIONS  = -Wl,--section-start=.text=0x7e00 -Wl,--section-start=.version=0x7ffe
+atmega32: $(PROGRAM)_atmega32.hex
+atmega32: $(PROGRAM)_atmega32.lst
+
+atmega32_isp: atmega32
+atmega32_isp: TARGET = atmega32
+atmega32_isp: MCU_TARGET = atmega32
+# No OCD or JTAG, SPIEN, CKOPT (for full swing xtal), Bootsize=512B
+atmega32_isp: HFUSE ?= DE
+# 2.7V brownout, 16MHz Xtal, 16KCK/14CK+65ms
+atmega32_isp: LFUSE ?= FF
+atmega32_isp: isp
+
+#
+# ATmega16
+#
+atmega16: TARGET = atmega16
+atmega16: MCU_TARGET = atmega16
+atmega16: CFLAGS += $(COMMON_OPTIONS)
+atmega16: AVR_FREQ ?= 8000000L
+atmega16: LDSECTIONS  = -Wl,--section-start=.text=0x3e00 -Wl,--section-start=.version=0x3ffe
+atmega16: $(PROGRAM)_atmega16.hex
+atmega16: $(PROGRAM)_atmega16.lst
+
+atmega16_isp: atmega16
+atmega16_isp: TARGET = atmega16
+atmega16_isp: MCU_TARGET = atmega16
+# No OCD or JTAG, SPIEN, CKOPT (for full swing xtal), Bootsize=512B
+atmega16_isp: HFUSE ?= DC
+# 2.7V brownout, 16MHz Xtal, 16KCK/14CK+65ms
+atmega16_isp: LFUSE ?= FF
+atmega16_isp: isp
+
+#
+# ATmega162
+#
+atmega162: TARGET = atmega162
+atmega162: MCU_TARGET = atmega162
+atmega162: CFLAGS += $(COMMON_OPTIONS)
+atmega162: AVR_FREQ ?= 8000000L
+atmega162: LDSECTIONS  = -Wl,--section-start=.text=0x3e00 -Wl,--section-start=.version=0x3ffe
+atmega162: $(PROGRAM)_atmega162.hex
+atmega162: $(PROGRAM)_atmega162.lst
+
+atmega162_isp: atmega162
+atmega162_isp: TARGET = atmega162
+atmega162_isp: MCU_TARGET = atmega162
+# No OCD or JTAG, SPIEN, CKOPT (for full swing xtal), Bootsize=512B
+atmega162_isp: HFUSE ?= DC
+# 2.7V brownout, 16MHz Xtal, 16KCK/14CK+65ms
+atmega162_isp: LFUSE ?= FF
+atmega162_isp: isp
+
+#
+#Atmega128
+#
+atmega128: MCU_TARGET = atmega128
+atmega128: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT $(UART_CMD)
+atmega128: AVR_FREQ ?= 8000000L
+atmega128: LDSECTIONS = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
+atmega128: $(PROGRAM)_atmega128.hex
+atmega128: $(PROGRAM)_atmega128.lst

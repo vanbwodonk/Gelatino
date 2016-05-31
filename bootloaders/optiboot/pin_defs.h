@@ -151,7 +151,7 @@
 
 /*------------------------------------------------------------------------ */
 /* Mega support */
-#if defined(__AVR_ATmega128__)
+#if defined(__AVR_ATmega128__) || defined (__AVR_ATmega64__)
 /*------------------------------------------------------------------------ */
 /* Onboard LED is connected to pin PB7 on Arduino Mega */ 
 #if !defined(LED)
@@ -160,6 +160,7 @@
 #define TIFR1 TIFR
 #define WDTCSR WDTCR
 //#define MCUSR MCUCSR
+//#define SPMCR SPMCSR
 
 /* Ports for soft UART */
 #ifdef SOFT_UART

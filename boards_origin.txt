@@ -1,7 +1,7 @@
 # See: http://code.google.com/p/arduino/wiki/Platforms
 
 menu.cpu=Processor
-
+menu.clock=Clock
 ##############################################################
 
 yun.name=Arduino Yún
@@ -854,15 +854,33 @@ gelatino16.upload.speed=115200
 gelatino16.bootloader.tool=avrdude1
 gelatino16.bootloader.low_fuses=0xFF
 gelatino16.bootloader.high_fuses=0xDC
-gelatino16.bootloader.file=optiboot/optiboot_atmega16.hex
 gelatino16.bootloader.unlock_bits=0x3F
 gelatino16.bootloader.lock_bits=0x0F
 
 gelatino16.build.mcu=atmega16
-gelatino16.build.f_cpu=16000000L
 gelatino16.build.board=AVR_gelatino16
 gelatino16.build.core=gelatino16
 gelatino16.build.variant=gelatino16
+
+gelatino16.menu.clock.20MHz=20MHz
+gelatino16.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega16_20MHz.hex
+gelatino16.menu.clock.20MHz.build.f_cpu=20000000L
+
+gelatino16.menu.clock.16MHz=16MHz
+gelatino16.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega16_16MHz.hex
+gelatino16.menu.clock.16MHz.build.f_cpu=16000000L
+
+gelatino16.menu.clock.12MHz=12MHz
+gelatino16.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega16_12MHz.hex
+gelatino16.menu.clock.12MHz.build.f_cpu=12000000L
+
+gelatino16.menu.clock.11MHz=11.0592MHz
+gelatino16.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega16_11MHz.hex
+gelatino16.menu.clock.11MHz.build.f_cpu=11059200L
+
+gelatino16.menu.clock.8MHz=8MHz  
+gelatino16.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega16_8MHz.hex
+gelatino16.menu.clock.8MHz.build.f_cpu=8000000L
 
 ##############################################################
 
@@ -878,15 +896,33 @@ gelatino32.bootloader.tool=avrdude1
 gelatino32.bootloader.low_fuses=0xFF
 gelatino32.bootloader.high_fuses=0xDE
 gelatino32.bootloader.extended_fuses=0xFF
-gelatino32.bootloader.file=optiboot/optiboot_atmega32.hex
 gelatino32.bootloader.unlock_bits=0x3F
 gelatino32.bootloader.lock_bits=0x0F
 
 gelatino32.build.mcu=atmega32
-gelatino32.build.f_cpu=16000000L
 gelatino32.build.board=AVR_gelatino32
 gelatino32.build.core=gelatino16
 gelatino32.build.variant=gelatino16
+
+gelatino32.menu.clock.20MHz=20MHz
+gelatino32.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega32_20MHz.hex
+gelatino32.menu.clock.20MHz.build.f_cpu=20000000L
+
+gelatino32.menu.clock.16MHz=16MHz
+gelatino32.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega32_16MHz.hex
+gelatino32.menu.clock.16MHz.build.f_cpu=16000000L
+
+gelatino32.menu.clock.12MHz=12MHz
+gelatino32.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega32_12MHz.hex
+gelatino32.menu.clock.12MHz.build.f_cpu=12000000L
+
+gelatino32.menu.clock.11MHz=11.0592MHz
+gelatino32.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega32_11MHz.hex
+gelatino32.menu.clock.11MHz.build.f_cpu=11059200L
+
+gelatino32.menu.clock.8MHz=8MHz  
+gelatino32.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega32_8MHz.hex
+gelatino32.menu.clock.8MHz.build.f_cpu=8000000L
 
 ##############################################################
 
@@ -902,15 +938,33 @@ gelatino128.bootloader.tool=avrdude
 gelatino128.bootloader.low_fuses=0xFF
 gelatino128.bootloader.high_fuses=0xDE
 gelatino128.bootloader.extended_fuses=0xFF
-gelatino128.bootloader.file=optiboot/optiboot_atmega128.hex
 gelatino128.bootloader.unlock_bits=0x3F
 gelatino128.bootloader.lock_bits=0x0F
 
 gelatino128.build.mcu=atmega128
-gelatino128.build.f_cpu=16000000L
 gelatino128.build.board=AVR_gelatino128
 gelatino128.build.core=gelatino128
 gelatino128.build.variant=gelatino128
+
+gelatino128.menu.clock.20MHz=20MHz
+gelatino128.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega128_20MHz.hex
+gelatino128.menu.clock.20MHz.build.f_cpu=20000000L
+
+gelatino128.menu.clock.16MHz=16MHz
+gelatino128.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega128_16MHz.hex
+gelatino128.menu.clock.16MHz.build.f_cpu=16000000L
+
+gelatino128.menu.clock.12MHz=12MHz
+gelatino128.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega128_12MHz.hex
+gelatino128.menu.clock.12MHz.build.f_cpu=12000000L
+
+gelatino128.menu.clock.11MHz=11.0592MHz
+gelatino128.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega128_11MHz.hex
+gelatino128.menu.clock.11MHz.build.f_cpu=11059200L
+
+gelatino128.menu.clock.8MHz=8MHz  
+gelatino128.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega128_8MHz.hex
+gelatino128.menu.clock.8MHz.build.f_cpu=8000000L
 
 ##############################################################
 
@@ -926,12 +980,30 @@ gelatino162.bootloader.tool=avrdude
 gelatino162.bootloader.low_fuses=0xFF
 gelatino162.bootloader.high_fuses=0xD8
 gelatino162.bootloader.extended_fuses=0xFB
-gelatino162.bootloader.file=optiboot/optiboot_atmega162.hex
 gelatino162.bootloader.unlock_bits=0x3F
 gelatino162.bootloader.lock_bits=0x0F
 
 gelatino162.build.mcu=atmega162
-gelatino162.build.f_cpu=16000000L
 gelatino162.build.board=AVR_gelatino162
 gelatino162.build.core=gelatino162
 gelatino162.build.variant=gelatino162
+
+gelatino162.menu.clock.20MHz=20MHz
+gelatino162.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega162_20MHz.hex
+gelatino162.menu.clock.20MHz.build.f_cpu=20000000L
+
+gelatino162.menu.clock.16MHz=16MHz
+gelatino162.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega162_16MHz.hex
+gelatino162.menu.clock.16MHz.build.f_cpu=16000000L
+
+gelatino162.menu.clock.12MHz=12MHz
+gelatino162.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega162_12MHz.hex
+gelatino162.menu.clock.12MHz.build.f_cpu=12000000L
+
+gelatino162.menu.clock.11MHz=11.0592MHz
+gelatino162.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega162_11MHz.hex
+gelatino162.menu.clock.11MHz.build.f_cpu=11059200L
+
+gelatino162.menu.clock.8MHz=8MHz
+gelatino162.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega162_8MHz.hex
+gelatino162.menu.clock.8MHz.build.f_cpu=8000000L
