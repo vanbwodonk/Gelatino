@@ -33,12 +33,12 @@
 
 #define digitalPinHasPWM(p)         ((p) == 5 || (p) == 6 || (p) == 8 || (p) == 9 || (p) == 10 || (p) == 30)
 
-const static uint8_t SS   = 10;
-const static uint8_t MOSI = 11;
-const static uint8_t MISO = 12;
-const static uint8_t SCK  = 13;
+static const uint8_t SS   = 10;
+static const uint8_t MOSI = 11;
+static const uint8_t MISO = 12;
+static const uint8_t SCK  = 13;
 
-const static uint8_t LED_BUILTIN = 13;
+static const uint8_t LED_BUILTIN = 13;
 
 #define digitalPinToPCICR(p)    ( (((p) >= 14) && ((p) <= 17)) || \
                                   (((p) >= 20) && ((p) <= 27)) || \
