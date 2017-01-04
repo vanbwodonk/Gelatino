@@ -1,36 +1,38 @@
-/*
-  pins_arduino.h - Pin definition functions for Arduino
-  Part of Arduino - http://www.arduino.cc/
-
-  Copyright (c) 2007 David A. Mellis
-
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General
-  Public License along with this library; if not, write to the
-  Free Software Foundation, Inc., 59 Temple Place, Suite 330,
-  Boston, MA  02111-1307  USA
-
-  $Id: wiring.h 249 2007-02-03 16:52:51Z mellis $
-*/
+// MEGACORE - ATmega64/128 pin mapping
+// Created by MCUdude
+// https://github.com/MCUdude/MegaCore
+//
+// 	ARD.  	 AVR
+// 	PINS  	 PINS
+//  	|>        |  		       	A0   A1   A2   A3   A4   A5   A6   A7 
+//  	|>	  |		        D45  D46  D47  D48  D49  D50  D51  D52		  D44  D43  D42
+//  	|	  | >	 AVC  GND  ARE  PF0  PF1  PF2  PF3  PF4  PF5  PF6  PF7  GND  VCC  PA0  PA1  PA2
+//  	V	  V	  -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
+//		 PEN	|									       | PA3	D41
+//	D0	 PE0	|									       | PA4	D40
+//	D1	 PE1	|									       | PA5	D39
+//	D2	 PE2	|									       | PA6	D38
+//	D3	 PE3	|									       | PA7	D37
+//	D4	 PE4	|									       | PG2	D36
+//	D5	 PE5	|									       | PC7	D35
+//	D6	 PE6	|									       | PC6	D34
+//	D7	 PE7	|									       | PC5	D33
+//	D8	 PB0	|									       | PC4	D32
+//	D9	 PB1	|									       | PC3	D31
+//	D10	 PB2	|									       | PC2	D30
+//	D11	 PB3	|									       | PC1	D29
+//	D12	 PB4	|									       | PC0	D28
+//	D13	 PB5	|									       | PG1	D27 
+//	D14	 PB6	|									       | PG0	D26 
+//		  	  -    -    -    -    -    -    -    -    -    -    -    -    -    -    -    -
+//		 	 PB7  PG3  PG4  RST  VCC  GND  XT2  XT1  PD0  PD1  PD2  PD3  PD4  PD5  PD6  PD7
+//			 D15  D16  D17  			 D18  D19  D20  D21  D22  D23  D24  D25
+//
+//
+//
 
 #ifndef Pins_Arduino_h
 #define Pins_Arduino_h
-
-#include <avr/pgmspace.h>
-
-#define NUM_DIGITAL_PINS            53
-#define NUM_ANALOG_INPUTS           8
-#define analogInputToDigitalPin(p)  ((p < 8) ? (p) + 45 : -1)
-#define digitalPinHasPWM(p)         (((p) >= 3 && (p) <= 6) || ((p) >= 12 && (p)<= 15))
 
 #define PE_0  0	
 #define PE_1  1
@@ -86,14 +88,24 @@
 #define PF_6 51
 #define PF_7 52
 
+#include <avr/pgmspace.h>
+
+
+#define NUM_DIGITAL_PINS            53
+#define NUM_ANALOG_INPUTS           8
+#define analogInputToDigitalPin(p) (((p) < 8) ? (p) + 45 : -1)
+#define digitalPinHasPWM(p)        (((p) >= 3 && (p) <= 5) || ((p) >= 12 && (p) <= 15))
+#define digitalPinToInterrupt(p)   (((p) >= 4 && (p) <= 7) ? (p) : ((p) >= 18 && (p) <= 21) ? (p) - 18 : NOT_AN_INTERRUPT)
+
 static const uint8_t SS   = 8;
+static const uint8_t SCK  = 9;
 static const uint8_t MOSI = 10;
 static const uint8_t MISO = 11;
-static const uint8_t SCK  = 9;
 
-static const uint8_t SDA = 19;
-static const uint8_t SCL = 18;
-static const uint8_t LED_BUILTIN = 13;
+#define LED_BUILTIN 13
+
+static const uint8_t SDA = 18;
+static const uint8_t SCL = 19;
 
 static const uint8_t A0 = 45;
 static const uint8_t A1 = 46;
@@ -104,24 +116,7 @@ static const uint8_t A5 = 50;
 static const uint8_t A6 = 51;
 static const uint8_t A7 = 52;
 
-// A majority of the pins are NOT PCINTs, SO BE WARNED (i.e. you cannot use them as receive pins)
-// Only pins available for RECEIVE (TRANSMIT can be on any pin):
-// (I've deliberately left out pin mapping to the Hardware USARTs - seems senseless to me)
-// E. Lins: changed this stuff to match the ATmega128, but it doesn't have PCINTs at all
-// I eventually added the regular external interrupt stuff, but this has to be adapted in the core code
-// Pins: 4, 5, 6, 7, 18, 19, 20, 21
 
-#define digitalPinToPCICR(p)    ( (((p) >= 4) && ((p) <= 7)) ? (&EICRB) : \
-                                  (((p) >= 18) && ((p) <= 21)) ? (&EICRA) : ((uint8_t *)0) )
-
-#define digitalPinToPCICRbit(p) ( (((p) >= 4) && ((p) <= 7)) || (((p) >= 18) && ((p) <= 21)) ? 0 : 0 ) )
-
-#define digitalPinToPCMSK(p)    ( (((p) >= 4) && ((p) <= 7)) || (((p) >= 18) && ((p) <= 21)) ? (&EIMSK) : \
-                                ((uint8_t *)0) ) )
-
-#define digitalPinToPCMSKbit(p) ( (((p) >= 4) && ((p) <= 7)) ? ((p)) : \
-                                ( (((p) >= 18) && ((p) <= 21))) ? ((p - 18)) : \
-                                0 )
 
 #ifdef ARDUINO_MAIN
 
@@ -159,179 +154,196 @@ const uint16_t PROGMEM port_to_input_PGM[] = {
 };
 
 const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
-	// PORTLIST		
-	// -------------------------------------------		
-	PE	, // PE 0 ->  0 -> USART0_RX	
-	PE	, // PE 1 ->  1 -> USART0_TX	
-	PE	, // PE 2 ->  2 
-	PE	, // PE 3 ->  3 -> PWM3
-	PE	, // PE 4 ->  4 -> PWM4	-> INT4
-	PE	, // PE 5 ->  5 -> PWM5	-> INT5
-	PE	, // PE 6 ->  6 		-> INT6		
-	PE	, // PE 7 ->  7 		-> INT7
-	PB	, // PB 0 ->  8 -> SPI_SS
-	PB	, // PB 1 ->  9 -> SPI_SCK
-	PB	, // PB 2 -> 10 -> SPI_MOSI
-	PB	, // PB 3 -> 11 -> SPI_MISO
-	PB	, // PB 4 -> 12 -> PWM12
-	PB	, // PB 5 -> 13 -> PWM13
-	PB	, // PB 6 -> 14 -> PWM14
-	PB	, // PB 7 -> 15 -> PWM15	
-	PG	, // PG 3 -> 16
-	PG	, // PG 4 -> 17 
-	PD	, // PD 0 -> 18 -> I2C_SCL	-> INT0
-	PD	, // PD 1 -> 19 -> I2C_SDA	-> INT1		
-	PD	, // PD 2 -> 20 -> USART1_RX-> INT2
-	PD	, // PD 3 -> 21 -> USART2_TX-> INT3
-	PD	, // PD 4 -> 22 
-	PD	, // PD 5 -> 23 
-	PD	, // PD 6 -> 24 
-	PD	, // PD 7 -> 25 
-	PG	, // PG 0 -> 26 
-	PG	, // PG 1 -> 27 
-	PC	, // PC 0 -> 28 
-	PC	, // PC 1 -> 29 
-	PC	, // PC 2 -> 30 
-	PC	, // PC 3 -> 31 
-	PC	, // PC 4 -> 32 
-	PC	, // PC 5 -> 33 
-	PC	, // PC 6 -> 34 
-	PC	, // PC 7 -> 35 
-	PG	, // PG 2 -> 36 
-	PA	, // PA 7 -> 37 
-	PA	, // PA 6 -> 38 
-	PA	, // PA 5 -> 39 
-	PA	, // PA 4 -> 40 
-	PA	, // PA 3 -> 41 
-	PA	, // PA 2 -> 42 
-	PA	, // PA 1 -> 43
-	PA	, // PA 0 -> 44 
-	PF	, // PF 0 -> 45 -> Analog0
-	PF	, // PF 1 -> 46 -> Analog1
-	PF	, // PF 2 -> 47 -> Analog2
-	PF	, // PF 3 -> 48 -> Analog3
-	PF	, // PF 4 -> 49 -> Analog4
-	PF	, // PF 5 -> 50 -> Analog5
-	PF	, // PF 6 -> 51 -> Analog6
-	PF	, // PF 7 -> 52 -> Analog7
+	PE, // PE0 ** D0 ** RX0	
+	PE, // PE1 ** D1 ** TX0	
+	PE, // PE2 ** D2
+	PE, // PE3 ** D3 ** PWM
+	PE, // PE4 ** D4 ** PWM	
+	PE, // PE5 ** D5 ** PWM
+	PE, // PE6 ** D6 
+	PE, // PE7 ** D7
+	
+	PB, // PB0 ** D8 ** SS	
+	PB, // PB1 ** D9 ** SCK
+	PB, // PB2 ** D10 ** MOSI	
+	PB, // PB3 ** D11 ** MISO	
+	PB, // PB4 ** D12 ** PWM
+	PB, // PB5 ** D13 ** PWM
+	PB, // PB6 ** D14 ** PWM	
+	PB, // PB7 ** D15 ** PWM	
+	
+	PG, // PG3 ** D16
+	PG, // PG4 ** D17
+	
+	PD, // PD0 ** D18 ** SCL	
+	PD, // PD1 ** D19 ** SDA	
+	PD, // PD2 ** D20 ** RX1
+	PD, // PD3 ** D21 ** TX1	
+	PD, // PD4 ** D22 
+	PD, // PD5 ** D23	
+	PD, // PD6 ** D24
+	PD, // PD7 ** D25
+	
+	PG, // PG0 ** D26
+	PG, // PG1 ** D27
+	
+	PC, // PC0 ** D28
+	PC, // PC1 ** D29
+	PC, // PC2 ** D30
+	PC, // PC3 ** D31	
+	PC, // PC4 ** D32	
+	PC, // PC5 ** D33
+	PC, // PC6 ** D34
+	PC, // PC7 ** D35
+	
+	PG, // PG2 ** D36
+	
+	PA, // PA7 ** D37	
+	PA, // PA6 ** D38
+	PA, // PA5 ** D39	
+	PA, // PA4 ** D40
+	PA, // PA3 ** D41
+	PA, // PA2 ** D42
+	PA, // PA1 ** D43
+	PA, // PA0 ** D44
+	
+	PF, // PF0 ** D45 ** A0	
+	PF, // PF1 ** D46 ** A1	
+	PF, // PF2 ** D47 ** A2	
+	PF, // PF3 ** D48 ** A3	
+	PF, // PF4 ** D49 ** A4	
+	PF, // PF5 ** D50 ** A5	
+	PF, // PF6 ** D51 ** A6	
+	PF, // PF7 ** D52 ** A7	
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
-	// PIN IN PORT		
-	// -------------------------------------------		
-	_BV( 0 )	, // PE 0 ->  0 -> USART0_RX	
-	_BV( 1 )	, // PE 1 ->  1 -> USART0_TX	
-	_BV( 2 )	, // PE 2 ->  2 
-	_BV( 3 )	, // PE 3 ->  3 -> PWM3
-	_BV( 4 )	, // PE 4 ->  4 -> PWM4
-	_BV( 5 )	, // PE 5 ->  5 -> PWM5
-	_BV( 6 )	, // PE 6 ->  6
-	_BV( 7 )	, // PE 7 ->  7 
-	_BV( 0 )	, // PB 0 ->  8 -> SPI_SS
-	_BV( 1 )	, // PB 1 ->  9 -> SPI_SCK
-	_BV( 2 )	, // PB 2 -> 10 -> SPI_MOSI
-	_BV( 3 )	, // PB 3 -> 11 -> SPI_MISO
-	_BV( 4 )	, // PB 4 -> 12 -> PWM12
-	_BV( 5 )	, // PB 5 -> 13 -> PWM13
-	_BV( 6 )	, // PB 6 -> 14 -> PWM14
-	_BV( 7 )	, // PB 7 -> 15 -> PWM15
-	_BV( 3 )	, // PG 3 -> 16 
-	_BV( 4 )	, // PG 4 -> 17 
-	_BV( 0 )	, // PD 0 -> 18 -> I2C_SCL
-	_BV( 1 )	, // PD 1 -> 19 -> I2C_SDA
-	_BV( 2 )	, // PD 2 -> 20 -> USART1_RX
-	_BV( 3 )	, // PD 3 -> 21 -> USART2_TX
-	_BV( 4 )	, // PD 4 -> 22 
-	_BV( 5 )	, // PD 5 -> 23 
-	_BV( 6 )	, // PD 6 -> 24 
-	_BV( 7 )	, // PD 7 -> 25 
-	_BV( 0 )	, // PG 0 -> 26 
-	_BV( 1 )	, // PG 1 -> 27
-	_BV( 0 )	, // PC 0 -> 28 
-	_BV( 1 )	, // PC 1 -> 29 
-	_BV( 2 )	, // PC 2 -> 30 
-	_BV( 3 )	, // PC 3 -> 31 
-	_BV( 4 )	, // PC 4 -> 32 
-	_BV( 5 )	, // PC 5 -> 33
-	_BV( 6 )	, // PC 6 -> 34 
-	_BV( 7 )	, // PC 7 -> 35
-	_BV( 2 )	, // PG 2 -> 36 
-	_BV( 7 )	, // PA 7 -> 37
-	_BV( 6 )	, // PA 6 -> 38 
-	_BV( 5 )	, // PA 5 -> 39 
-	_BV( 4 )	, // PA 4 -> 40 
-	_BV( 3 )	, // PA 3 -> 41 
-	_BV( 2 )	, // PA 2 -> 42 
-	_BV( 1 )	, // PA 1 -> 43 
-	_BV( 0 )	, // PA 0 -> 44
-	_BV( 0 )	, // PF 0 -> 45 -> Analog0
-	_BV( 1 )	, // PF 1 -> 46 -> Analog1
-	_BV( 2 )	, // PF 2 -> 47 -> Analog2
-	_BV( 3 )	, // PF 3 -> 48 -> Analog3
-	_BV( 4 )	, // PF 4 -> 49 -> Analog4
-	_BV( 5 )	, // PF 5 -> 50 -> Analog5
-	_BV( 6 )	, // PF 6 -> 51 -> Analog6
-	_BV( 7 )	, // PF 7 -> 52 -> Analog7
+	_BV(0), // PE0 ** D0 ** RX0	
+	_BV(1), // PE1 ** D1 ** TX0	
+	_BV(2), // PE2 ** D2
+	_BV(3), // PE3 ** D3 ** PWM
+	_BV(4), // PE4 ** D4 ** PWM	
+	_BV(5), // PE5 ** D5 ** PWM
+	_BV(6), // PE6 ** D6 
+	_BV(7), // PE7 ** D7
+	
+	_BV(0), // PB0 ** D8 ** SS	
+	_BV(1), // PB1 ** D9 ** SCK
+	_BV(2), // PB2 ** D10 ** MOSI	
+	_BV(3), // PB3 ** D11 ** MISO	
+	_BV(4), // PB4 ** D12 ** PWM
+	_BV(5), // PB5 ** D13 ** PWM
+	_BV(6), // PB6 ** D14 ** PWM	
+	_BV(7), // PB7 ** D15 ** PWM	
+	
+	_BV(3), // PG3 ** D16
+	_BV(4), // PG4 ** D17
+	
+	_BV(0), // PD0 ** D18 ** SCL	
+	_BV(1), // PD1 ** D19 ** SDA	
+	_BV(2), // PD2 ** D20 ** RX1
+	_BV(3), // PD3 ** D21 ** TX1	
+	_BV(4), // PD4 ** D22 
+	_BV(5), // PD5 ** D23	
+	_BV(6), // PD6 ** D24
+	_BV(7), // PD7 ** D25
+	
+	_BV(0), // PG0 ** D26
+	_BV(1), // PG1 ** D27
+	
+	_BV(0), // PC0 ** D28
+	_BV(1), // PC1 ** D29
+	_BV(2), // PC2 ** D30
+	_BV(3), // PC3 ** D31	
+	_BV(4), // PC4 ** D32	
+	_BV(5), // PC5 ** D33
+	_BV(6), // PC6 ** D34
+	_BV(7), // PC7 ** D35
+	
+	_BV(2), // PG2 ** D36
+	
+	_BV(7), // PA7 ** D37	
+	_BV(6), // PA6 ** D38
+	_BV(5), // PA5 ** D39	
+	_BV(4), // PA4 ** D40
+	_BV(3), // PA3 ** D41
+	_BV(2), // PA2 ** D42
+	_BV(1), // PA1 ** D43
+	_BV(0), // PA0 ** D44
+	
+	_BV(0), // PF0 ** D45 ** A0	
+	_BV(1), // PF1 ** D46 ** A1	
+	_BV(2), // PF2 ** D47 ** A2	
+	_BV(3), // PF3 ** D48 ** A3	
+	_BV(4), // PF4 ** D49 ** A4	
+	_BV(5), // PF5 ** D50 ** A5	
+	_BV(6), // PF6 ** D51 ** A6	
+	_BV(7), // PF7 ** D52 ** A7	
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
-	// TIMERS		
-	// -------------------------------------------		
-	NOT_ON_TIMER	, // PE 0 ->  0 -> USART0_RX	
-	NOT_ON_TIMER	, // PE 1 ->  1 -> USART0_TX	
-	NOT_ON_TIMER	, // PE 2 ->  2 
-	TIMER3A			, // PE 3 ->  3 -> PWM3
-	TIMER3B			, // PE 4 ->  4 -> PWM4
-	TIMER3C			, // PE 5 ->  5 -> PWM5
-	NOT_ON_TIMER	, // PE 6 ->  6 
-	NOT_ON_TIMER	, // PE 7 ->  7 
-	NOT_ON_TIMER	, // PB 0 ->  8 -> SPI_SS
-	NOT_ON_TIMER	, // PB 1 ->  9 -> SPI_SCK
-	NOT_ON_TIMER	, // PB 2 -> 10 -> SPI_MOSI
-	NOT_ON_TIMER	, // PB 3 -> 11 -> SPI_MISO
-	TIMER0A			, // PB 4 -> 12 -> PWM12
-	TIMER1A			, // PB 5 -> 13 -> PWM13
-	TIMER1B			, // PB 6 -> 14 -> PWM14
-	TIMER2			, // PB 7 -> 15 -> PWM15
-	NOT_ON_TIMER	, // PG 0 -> 16 -> I2C_SCL
-	NOT_ON_TIMER	, // PG 3 -> 17 
-	NOT_ON_TIMER	, // PG 4 -> 18 
-	NOT_ON_TIMER	, // PD 1 -> 19 -> I2C_SDA
-	NOT_ON_TIMER	, // PD 2 -> 20 -> USART1_RX
-	NOT_ON_TIMER	, // PD 3 -> 21 -> USART2_TX
-	NOT_ON_TIMER	, // PD 4 -> 22 
-	NOT_ON_TIMER	, // PD 5 -> 23 
-	NOT_ON_TIMER	, // PD 6 -> 24 
-	NOT_ON_TIMER	, // PD 7 -> 25 
-	NOT_ON_TIMER	, // PG 0 -> 26
-	NOT_ON_TIMER	, // PG 1 -> 27 
-	NOT_ON_TIMER	, // PC 0 -> 28 
-	NOT_ON_TIMER	, // PC 1 -> 29 
-	NOT_ON_TIMER	, // PC 2 -> 30 
-	NOT_ON_TIMER	, // PC 3 -> 31 
-	NOT_ON_TIMER	, // PC 4 -> 32 
-	NOT_ON_TIMER	, // PC 5 -> 33 
-	NOT_ON_TIMER	, // PC 6 -> 34 
-	NOT_ON_TIMER	, // PC 7 -> 35 
-	NOT_ON_TIMER	, // PG 2 -> 36 
-	NOT_ON_TIMER	, // PA 7 -> 37 
-	NOT_ON_TIMER	, // PA 6 -> 38 
-	NOT_ON_TIMER	, // PA 5 -> 39
-	NOT_ON_TIMER	, // PA 4 -> 40 
-	NOT_ON_TIMER	, // PA 3 -> 41 
-	NOT_ON_TIMER	, // PA 2 -> 42 
-	NOT_ON_TIMER	, // PA 1 -> 43 
-	NOT_ON_TIMER	, // PA 0 -> 44 
-	NOT_ON_TIMER	, // PF 0 -> 45 -> Analog0
-	NOT_ON_TIMER	, // PF 1 -> 46 -> Analog1
-	NOT_ON_TIMER	, // PF 2 -> 47 -> Analog2
-	NOT_ON_TIMER	, // PF 3 -> 48 -> Analog3
-	NOT_ON_TIMER	, // PF 4 -> 49 -> Analog4
-	NOT_ON_TIMER	, // PF 5 -> 50 -> Analog5
-	NOT_ON_TIMER	, // PF 6 -> 51 -> Analog6
-	NOT_ON_TIMER	, // PF 7 -> 52 -> Analog7	
+	NOT_ON_TIMER, // PE0 ** D0 ** RX0	
+	NOT_ON_TIMER, // PE1 ** D1 ** TX0	
+	NOT_ON_TIMER, // PE2 ** D2
+	TIMER3A, 	  // PE3 ** D3 ** PWM
+	TIMER3B, 	  // PE4 ** D4 ** PWM	
+	TIMER3C, 	  // PE5 ** D5 ** PWM
+	NOT_ON_TIMER, // PE6 ** D6 
+	NOT_ON_TIMER, // PE7 ** D7
+	
+	NOT_ON_TIMER, // PB0 ** D8 ** SS	
+	NOT_ON_TIMER, // PB1 ** D9 ** SCK
+	NOT_ON_TIMER, // PB2 ** D10 ** MOSI	
+	NOT_ON_TIMER, // PB3 ** D11 ** MISO	
+	TIMER0, 	  // PB4 ** D12 ** PWM
+	TIMER1A, 	  // PB5 ** D13 ** PWM
+	TIMER1B, 	  // PB6 ** D14 ** PWM	
+	TIMER1C, 	  // PB7 ** D15 ** PWM	
+	
+	NOT_ON_TIMER, // PG3 ** D16
+	NOT_ON_TIMER, // PG4 ** D17
+	
+	NOT_ON_TIMER, // PD0 ** D18 ** SCL	
+	NOT_ON_TIMER, // PD1 ** D19 ** SDA	
+	NOT_ON_TIMER, // PD2 ** D20 ** RX1
+	NOT_ON_TIMER, // PD3 ** D21 ** TX1	
+	NOT_ON_TIMER, // PD4 ** D22 
+	NOT_ON_TIMER, // PD5 ** D23	
+	NOT_ON_TIMER, // PD6 ** D24
+	NOT_ON_TIMER, // PD7 ** D25
+	
+	NOT_ON_TIMER, // PG0 ** D26
+	NOT_ON_TIMER, // PG1 ** D27
+	
+	NOT_ON_TIMER, // PC0 ** D28
+	NOT_ON_TIMER, // PC1 ** D29
+	NOT_ON_TIMER, // PC2 ** D30
+	NOT_ON_TIMER, // PC3 ** D31	
+	NOT_ON_TIMER, // PC4 ** D32	
+	NOT_ON_TIMER, // PC5 ** D33
+	NOT_ON_TIMER, // PC6 ** D34
+	NOT_ON_TIMER, // PC7 ** D35
+	
+	NOT_ON_TIMER, // PG2 ** D36
+	
+	NOT_ON_TIMER, // PA7 ** D37	
+	NOT_ON_TIMER, // PA6 ** D38
+	NOT_ON_TIMER, // PA5 ** D39	
+	NOT_ON_TIMER, // PA4 ** D40
+	NOT_ON_TIMER, // PA3 ** D41
+	NOT_ON_TIMER, // PA2 ** D42
+	NOT_ON_TIMER, // PA1 ** D43
+	NOT_ON_TIMER, // PA0 ** D44
+	
+	NOT_ON_TIMER, // PF0 ** D45 ** A0	
+	NOT_ON_TIMER, // PF1 ** D46 ** A1	
+	NOT_ON_TIMER, // PF2 ** D47 ** A2	
+	NOT_ON_TIMER, // PF3 ** D48 ** A3	
+	NOT_ON_TIMER, // PF4 ** D49 ** A4	
+	NOT_ON_TIMER, // PF5 ** D50 ** A5	
+	NOT_ON_TIMER, // PF6 ** D51 ** A6	
+	NOT_ON_TIMER, // PF7 ** D52 ** A7	
 };
 
 #endif
-
 #endif
