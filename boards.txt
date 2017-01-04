@@ -149,23 +149,23 @@ gelatino1284.build.core=gelatino16
 gelatino1284.build.variant=gelatino16
 
 gelatino1284.menu.clock.20MHz=20MHz
-gelatino1284.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega1284_20MHz.hex
+gelatino1284.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega1284p_20MHz.hex
 gelatino1284.menu.clock.20MHz.build.f_cpu=20000000L
 
 gelatino1284.menu.clock.16MHz=16MHz
-gelatino1284.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega1284_16MHz.hex
+gelatino1284.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega1284p_16MHz.hex
 gelatino1284.menu.clock.16MHz.build.f_cpu=16000000L
 
 gelatino1284.menu.clock.12MHz=12MHz
-gelatino1284.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega1284_12MHz.hex
+gelatino1284.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega1284p_12MHz.hex
 gelatino1284.menu.clock.12MHz.build.f_cpu=12000000L
 
 gelatino1284.menu.clock.11MHz=11.0592MHz
-gelatino1284.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega1284_11MHz.hex
+gelatino1284.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega1284p_11MHz.hex
 gelatino1284.menu.clock.11MHz.build.f_cpu=11059200L
 
 gelatino1284.menu.clock.8MHz=8MHz  
-gelatino1284.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega1284_8MHz.hex
+gelatino1284.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega1284p_8MHz.hex
 gelatino1284.menu.clock.8MHz.build.f_cpu=8000000L
 
 ##############################################################
