@@ -86,7 +86,7 @@ gelatino32.menu.clock.8MHz.build.f_cpu=8000000L
 
 ##############################################################
 
-gelatino128.name=Gelatino-128 w/ ATmega128
+gelatino128.name=gelatino-128 w/ ATmega128
 
 gelatino128.upload.tool=avrdude
 gelatino128.upload.protocol=arduino
@@ -125,6 +125,48 @@ gelatino128.menu.clock.11MHz.build.f_cpu=11059200L
 gelatino128.menu.clock.8MHz=8MHz  
 gelatino128.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega128_8MHz.hex
 gelatino128.menu.clock.8MHz.build.f_cpu=8000000L
+
+##############################################################
+
+gelatino1284.name=gelatino-1284 w/ ATmega1284
+
+gelatino1284.upload.tool=avrdude
+gelatino1284.upload.protocol=arduino
+gelatino1284.upload.maximum_size=130048
+gelatino1284.upload.maximum_data_size=16384
+gelatino1284.upload.speed=115200
+
+gelatino1284.bootloader.tool=avrdude1
+gelatino1284.bootloader.low_fuses=0xF7
+gelatino1284.bootloader.high_fuses=0xD6
+gelatino1284.bootloader.unlock_bits=0x3F
+gelatino1284.bootloader.lock_bits=0x0F
+gelatino1284.bootloader.extended_fuses=0xfd
+
+gelatino1284.build.mcu=atmega1284
+gelatino1284.build.board=AVR_gelatino1284
+gelatino1284.build.core=gelatino16
+gelatino1284.build.variant=gelatino16
+
+gelatino1284.menu.clock.20MHz=20MHz
+gelatino1284.menu.clock.20MHz.bootloader.file=optiboot/build/optiboot_atmega1284_20MHz.hex
+gelatino1284.menu.clock.20MHz.build.f_cpu=20000000L
+
+gelatino1284.menu.clock.16MHz=16MHz
+gelatino1284.menu.clock.16MHz.bootloader.file=optiboot/build/optiboot_atmega1284_16MHz.hex
+gelatino1284.menu.clock.16MHz.build.f_cpu=16000000L
+
+gelatino1284.menu.clock.12MHz=12MHz
+gelatino1284.menu.clock.12MHz.bootloader.file=optiboot/build/optiboot_atmega1284_12MHz.hex
+gelatino1284.menu.clock.12MHz.build.f_cpu=12000000L
+
+gelatino1284.menu.clock.11MHz=11.0592MHz
+gelatino1284.menu.clock.11MHz.bootloader.file=optiboot/build/optiboot_atmega1284_11MHz.hex
+gelatino1284.menu.clock.11MHz.build.f_cpu=11059200L
+
+gelatino1284.menu.clock.8MHz=8MHz  
+gelatino1284.menu.clock.8MHz.bootloader.file=optiboot/build/optiboot_atmega1284_8MHz.hex
+gelatino1284.menu.clock.8MHz.build.f_cpu=8000000L
 
 ##############################################################
 

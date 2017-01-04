@@ -67,3 +67,28 @@ atmega128: AVR_FREQ ?= 8000000L
 atmega128: LDSECTIONS = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
 atmega128: $(PROGRAM)_atmega128.hex
 atmega128: $(PROGRAM)_atmega128.lst
+
+#
+#Atmega1284
+#
+atmega1284: TARGET = atmega1284p
+atmega1284: MCU_TARGET = atmega1284p
+atmega1284: LIBS += -latmega1284p
+atmega1284: CFLAGS += $(COMMON_OPTIONS) -DBIGBOOT
+atmega1284: AVR_FREQ ?= 12000000L
+atmega1284: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
+atmega1284: CFLAGS += $(UARTCMD)
+atmega1284: $(PROGRAM)_atmega1284p.hex
+atmega1284: $(PROGRAM)_atmega1284p.lst
+atmega1284p: atmega1284
+
+atmega1284_isp: atmega1284
+atmega1284_isp: TARGET = atmega1284p
+atmega1284_isp: MCU_TARGET = atmega1284p
+# 1024 byte boot
+atmega1284_isp: HFUSE ?= DE
+# Full Swing xtal (16MHz) 16KCK/14CK+65ms
+atmega1284_isp: LFUSE ?= F7
+# 2.7V brownout
+atmega1284_isp: EFUSE ?= FD
+atmega1284_isp: isp

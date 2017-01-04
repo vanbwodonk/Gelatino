@@ -1,5 +1,6 @@
 # 1 "optiboot.c"
-# 1 "/home/drw/.arduino15/packages/Gelatino/hardware/avr/1.0.0/bootloaders/optiboot//"
+# 1 "/home/drw/Software/builder/Gelatino/bootloaders/optiboot//"
+# 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "optiboot.c"
 # 239 "optiboot.c"
@@ -9,8 +10,8 @@ optiboot_version = 256*(6 + 0) + 2;
 
 # 1 "/usr/lib/avr/include/inttypes.h" 1 3
 # 37 "/usr/lib/avr/include/inttypes.h" 3
-# 1 "/usr/lib/gcc/avr/4.8.2/include/stdint.h" 1 3 4
-# 9 "/usr/lib/gcc/avr/4.8.2/include/stdint.h" 3 4
+# 1 "/usr/lib/gcc/avr/4.9.2/include/stdint.h" 1 3 4
+# 9 "/usr/lib/gcc/avr/4.9.2/include/stdint.h" 3 4
 # 1 "/usr/lib/avr/include/stdint.h" 1 3 4
 # 121 "/usr/lib/avr/include/stdint.h" 3 4
 typedef signed int int8_t __attribute__((__mode__(__QI__)));
@@ -120,7 +121,7 @@ typedef int64_t intmax_t;
 
 
 typedef uint64_t uintmax_t;
-# 10 "/usr/lib/gcc/avr/4.8.2/include/stdint.h" 2 3 4
+# 10 "/usr/lib/gcc/avr/4.9.2/include/stdint.h" 2 3 4
 # 38 "/usr/lib/avr/include/inttypes.h" 2 3
 # 77 "/usr/lib/avr/include/inttypes.h" 3
 typedef int32_t int_farptr_t;
@@ -133,66 +134,22 @@ typedef uint32_t uint_farptr_t;
 # 99 "/usr/lib/avr/include/avr/io.h" 3
 # 1 "/usr/lib/avr/include/avr/sfr_defs.h" 1 3
 # 100 "/usr/lib/avr/include/avr/io.h" 2 3
-# 150 "/usr/lib/avr/include/avr/io.h" 3
-# 1 "/usr/lib/avr/include/avr/iom128.h" 1 3
-# 1242 "/usr/lib/avr/include/avr/iom128.h" 3
-       
-# 1243 "/usr/lib/avr/include/avr/iom128.h" 3
-
-       
-       
-       
-
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-# 151 "/usr/lib/avr/include/avr/io.h" 2 3
-# 432 "/usr/lib/avr/include/avr/io.h" 3
+# 162 "/usr/lib/avr/include/avr/io.h" 3
+# 1 "/usr/lib/avr/include/avr/iom1284p.h" 1 3
+# 163 "/usr/lib/avr/include/avr/io.h" 2 3
+# 627 "/usr/lib/avr/include/avr/io.h" 3
 # 1 "/usr/lib/avr/include/avr/portpins.h" 1 3
-# 433 "/usr/lib/avr/include/avr/io.h" 2 3
+# 628 "/usr/lib/avr/include/avr/io.h" 2 3
 
 # 1 "/usr/lib/avr/include/avr/common.h" 1 3
-# 435 "/usr/lib/avr/include/avr/io.h" 2 3
+# 630 "/usr/lib/avr/include/avr/io.h" 2 3
 
 # 1 "/usr/lib/avr/include/avr/version.h" 1 3
-# 437 "/usr/lib/avr/include/avr/io.h" 2 3
+# 632 "/usr/lib/avr/include/avr/io.h" 2 3
+
+
+
+
 
 
 # 1 "/usr/lib/avr/include/avr/fuse.h" 1 3
@@ -203,19 +160,19 @@ typedef struct
     unsigned char high;
     unsigned char extended;
 } __fuse_t;
-# 440 "/usr/lib/avr/include/avr/io.h" 2 3
+# 639 "/usr/lib/avr/include/avr/io.h" 2 3
 
 
 # 1 "/usr/lib/avr/include/avr/lock.h" 1 3
-# 443 "/usr/lib/avr/include/avr/io.h" 2 3
+# 642 "/usr/lib/avr/include/avr/io.h" 2 3
 # 245 "optiboot.c" 2
 # 1 "/usr/lib/avr/include/avr/pgmspace.h" 1 3
 # 87 "/usr/lib/avr/include/avr/pgmspace.h" 3
-# 1 "/usr/lib/gcc/avr/4.8.2/include/stddef.h" 1 3 4
-# 212 "/usr/lib/gcc/avr/4.8.2/include/stddef.h" 3 4
+# 1 "/usr/lib/gcc/avr/4.9.2/include/stddef.h" 1 3 4
+# 212 "/usr/lib/gcc/avr/4.9.2/include/stddef.h" 3 4
 typedef unsigned int size_t;
 # 88 "/usr/lib/avr/include/avr/pgmspace.h" 2 3
-# 1037 "/usr/lib/avr/include/avr/pgmspace.h" 3
+# 1137 "/usr/lib/avr/include/avr/pgmspace.h" 3
 extern const void * memchr_P(const void *, int __val, size_t __len) __attribute__((__const__));
 extern int memcmp_P(const void *, const void *, size_t) __attribute__((__pure__));
 extern void *memccpy_P(void *, const void *, int __val, size_t);
@@ -263,97 +220,97 @@ extern size_t strlcpy_PF (char *dst, uint_farptr_t src, size_t siz);
 extern int memcmp_PF(const void *, uint_farptr_t, size_t) __attribute__((__pure__));
 
 
-__attribute__((__always_inline__)) static inline size_t strlen_P(const char * s);
-static inline size_t strlen_P(const char *s) {
+__attribute__((__always_inline__)) static __inline__ size_t strlen_P(const char * s);
+static __inline__ size_t strlen_P(const char *s) {
   return __builtin_constant_p(__builtin_strlen(s))
      ? __builtin_strlen(s) : __strlen_P(s);
 }
 # 246 "optiboot.c" 2
 # 1 "/usr/lib/avr/include/avr/eeprom.h" 1 3
-# 428 "/usr/lib/avr/include/avr/eeprom.h" 3
-# 1 "/usr/lib/gcc/avr/4.8.2/include/stddef.h" 1 3 4
-# 147 "/usr/lib/gcc/avr/4.8.2/include/stddef.h" 3 4
+# 50 "/usr/lib/avr/include/avr/eeprom.h" 3
+# 1 "/usr/lib/gcc/avr/4.9.2/include/stddef.h" 1 3 4
+# 147 "/usr/lib/gcc/avr/4.9.2/include/stddef.h" 3 4
 typedef int ptrdiff_t;
-# 324 "/usr/lib/gcc/avr/4.8.2/include/stddef.h" 3 4
+# 324 "/usr/lib/gcc/avr/4.9.2/include/stddef.h" 3 4
 typedef int wchar_t;
-# 429 "/usr/lib/avr/include/avr/eeprom.h" 2 3
-# 515 "/usr/lib/avr/include/avr/eeprom.h" 3
-uint8_t __eerd_byte_m128 (const uint8_t *__p) __attribute__((__pure__));
+# 51 "/usr/lib/avr/include/avr/eeprom.h" 2 3
+# 137 "/usr/lib/avr/include/avr/eeprom.h" 3
+uint8_t eeprom_read_byte (const uint8_t *__p) __attribute__((__pure__));
 
 
 
 
-uint16_t __eerd_word_m128 (const uint16_t *__p) __attribute__((__pure__));
+uint16_t eeprom_read_word (const uint16_t *__p) __attribute__((__pure__));
 
 
 
 
-uint32_t __eerd_dword_m128 (const uint32_t *__p) __attribute__((__pure__));
+uint32_t eeprom_read_dword (const uint32_t *__p) __attribute__((__pure__));
 
 
 
 
-float __eerd_float_m128 (const float *__p) __attribute__((__pure__));
-
-
-
-
-
-void __eerd_block_m128 (void *__dst, const void *__src, size_t __n);
+float eeprom_read_float (const float *__p) __attribute__((__pure__));
 
 
 
 
 
-void __eewr_byte_m128 (uint8_t *__p, uint8_t __value);
-
-
-
-
-void __eewr_word_m128 (uint16_t *__p, uint16_t __value);
-
-
-
-
-void __eewr_dword_m128 (uint32_t *__p, uint32_t __value);
-
-
-
-
-void __eewr_float_m128 (float *__p, float __value);
+void eeprom_read_block (void *__dst, const void *__src, size_t __n);
 
 
 
 
 
-void __eewr_block_m128 (const void *__src, void *__dst, size_t __n);
+void eeprom_write_byte (uint8_t *__p, uint8_t __value);
+
+
+
+
+void eeprom_write_word (uint16_t *__p, uint16_t __value);
+
+
+
+
+void eeprom_write_dword (uint32_t *__p, uint32_t __value);
+
+
+
+
+void eeprom_write_float (float *__p, float __value);
 
 
 
 
 
-void __eeupd_byte_m128 (uint8_t *__p, uint8_t __value);
-
-
-
-
-void __eeupd_word_m128 (uint16_t *__p, uint16_t __value);
-
-
-
-
-void __eeupd_dword_m128 (uint32_t *__p, uint32_t __value);
-
-
-
-
-void __eeupd_float_m128 (float *__p, float __value);
+void eeprom_write_block (const void *__src, void *__dst, size_t __n);
 
 
 
 
 
-void __eeupd_block_m128 (const void *__src, void *__dst, size_t __n);
+void eeprom_update_byte (uint8_t *__p, uint8_t __value);
+
+
+
+
+void eeprom_update_word (uint16_t *__p, uint16_t __value);
+
+
+
+
+void eeprom_update_dword (uint32_t *__p, uint32_t __value);
+
+
+
+
+void eeprom_update_float (float *__p, float __value);
+
+
+
+
+
+void eeprom_update_block (const void *__src, void *__dst, size_t __n);
 # 247 "optiboot.c" 2
 
 
@@ -363,7 +320,7 @@ void __eeupd_block_m128 (const void *__src, void *__dst, size_t __n);
 
 # 1 "boot.h" 1
 # 118 "boot.h"
-# 1 "/usr/lib/gcc/avr/4.8.2/include-fixed/limits.h" 1 3 4
+# 1 "/usr/lib/gcc/avr/4.9.2/include-fixed/limits.h" 1 3 4
 # 119 "boot.h" 2
 # 254 "optiboot.c" 2
 # 263 "optiboot.c"
@@ -411,26 +368,21 @@ int main(void) {
   register pagelen_t length;
 # 462 "optiboot.c"
   asm volatile ("clr __zero_reg__");
-
-  (*(volatile uint16_t *)((0x3D) + 0x20))=0x10FF;
-# 474 "optiboot.c"
+# 477 "optiboot.c"
   ch = (*(volatile uint8_t *)((0x34) + 0x20));
   (*(volatile uint8_t *)((0x34) + 0x20)) = 0;
-
-
-
 
   if (ch & ((1 << (3)) | (1 << (2)) | (1 << (0))))
       appStart(ch);
 
 
 
-  (*(volatile uint8_t *)((0x2E) + 0x20)) = (1 << (2)) | (1 << (0));
+  (*(volatile uint8_t *)(0x81)) = (1 << (2)) | (1 << (0));
 # 495 "optiboot.c"
-  (*(volatile uint8_t *)((0x0B) + 0x20)) = (1 << (1));
-  (*(volatile uint8_t *)((0x0A) + 0x20)) = (1 << (4)) | (1 << (3));
-  (*(volatile uint8_t *)(0x95)) = (1 << (1)) | (1 << (2));
-  (*(volatile uint8_t *)((0x09) + 0x20)) = (uint8_t)( (8000000L + 115200 * 4L) / (115200 * 8L) - 1 );
+  (*(volatile uint8_t *)(0xC0)) = (1 << (1));
+  (*(volatile uint8_t *)(0xC1)) = (1 << (4)) | (1 << (3));
+  (*(volatile uint8_t *)(0xC2)) = (1 << (1)) | (1 << (2));
+  (*(volatile uint8_t *)(0xC4)) = (uint8_t)( (12000000L + 115200 * 4L) / (115200 * 8L) - 1 );
 
 
 
@@ -439,7 +391,7 @@ int main(void) {
 
 
 
-  (*(volatile uint8_t *)((0x02) + 0x20)) |= (1 << (0));
+  (*(volatile uint8_t *)((0x04) + 0x20)) |= (1 << (0));
 # 517 "optiboot.c"
   flash_led(3 * 2);
 
@@ -506,14 +458,14 @@ int main(void) {
       desttype = getch();
 
 
-      bufPtr = ((uint8_t*)(0x100));
+      bufPtr = ((uint8_t*)((0x100)));
       do *bufPtr++ = getch();
       while (--length);
 
 
       verifySpace();
 # 644 "optiboot.c"
-      writebuffer(desttype, ((uint8_t*)(0x100)), address, savelength);
+      writebuffer(desttype, ((uint8_t*)((0x100))), address, savelength);
 
 
     }
@@ -535,7 +487,7 @@ int main(void) {
       verifySpace();
       putch(0x1E);
       putch(0x97);
-      putch(0x02);
+      putch(0x05);
     }
     else if (ch == 0x51) {
 
@@ -552,22 +504,22 @@ int main(void) {
 
 void putch(char ch) {
 
-  while (!((*(volatile uint8_t *)((0x0B) + 0x20)) & (1 << (5))));
-  (*(volatile uint8_t *)((0x0C) + 0x20)) = ch;
+  while (!((*(volatile uint8_t *)(0xC0)) & (1 << (5))));
+  (*(volatile uint8_t *)(0xC6)) = ch;
 # 709 "optiboot.c"
 }
 
 uint8_t getch(void) {
   uint8_t ch;
 # 748 "optiboot.c"
-  while(!((*(volatile uint8_t *)((0x0B) + 0x20)) & (1 << (7))))
+  while(!((*(volatile uint8_t *)(0xC0)) & (1 << (7))))
     ;
-  if (!((*(volatile uint8_t *)((0x0B) + 0x20)) & (1 << (4)))) {
+  if (!((*(volatile uint8_t *)(0xC0)) & (1 << (4)))) {
 # 759 "optiboot.c"
     watchdogReset();
   }
 
-  ch = (*(volatile uint8_t *)((0x0C) + 0x20));
+  ch = (*(volatile uint8_t *)(0xC6));
 # 773 "optiboot.c"
   return ch;
 }
@@ -589,13 +541,13 @@ void verifySpace() {
 
 void flash_led(uint8_t count) {
   do {
-    (*(volatile uint16_t *)((0x2C) + 0x20)) = -(8000000L/(1024*16));
-    (*(volatile uint8_t *)((0x36) + 0x20)) = (1 << (2));
-    while(!((*(volatile uint8_t *)((0x36) + 0x20)) & (1 << (2))));
-
-    (*(volatile uint8_t *)((0x03) + 0x20)) ^= (1 << (0));
+    (*(volatile uint16_t *)(0x84)) = -(12000000L/(1024*16));
+    (*(volatile uint8_t *)((0x16) + 0x20)) = (1 << (0));
+    while(!((*(volatile uint8_t *)((0x16) + 0x20)) & (1 << (0))));
 
 
+
+    (*(volatile uint8_t *)((0x03) + 0x20)) |= (1 << (0));
 
     watchdogReset();
   } while (--count);
@@ -610,8 +562,8 @@ void watchdogReset() {
 }
 
 void watchdogConfig(uint8_t x) {
-  (*(volatile uint8_t *)((0x21) + 0x20)) = (1 << (4)) | (1 << (3));
-  (*(volatile uint8_t *)((0x21) + 0x20)) = x;
+  (*(volatile uint8_t *)(0x60)) = (1 << (4)) | (1 << (3));
+  (*(volatile uint8_t *)(0x60)) = x;
 }
 
 void appStart(uint8_t rstFlags) {
@@ -641,7 +593,7 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
     case 'E':
 
         while(len--) {
-     __eewr_byte_m128((uint8_t *)(address++), *mybuff++);
+     eeprom_write_byte((uint8_t *)(address++), *mybuff++);
         }
 # 875 "optiboot.c"
  break;
@@ -655,12 +607,10 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 
      uint8_t *bufPtr = mybuff;
      uint16_t addrPtr = (uint16_t)(void*)address;
-# 894 "optiboot.c"
-  (__extension__({ __asm__ __volatile__ ( "sts %0, %1\n\t" "spm\n\t" : : "i" (((uint16_t) &((*(volatile uint8_t *)(0x68))))), "r" ((uint8_t)((1 << (0)) | (1 << (1)))), "z" ((uint16_t)(uint16_t)(void*)address) ); }));
+# 896 "optiboot.c"
+     (__extension__({ __asm__ __volatile__ ( "out %0, %1\n\t" "spm\n\t" : : "i" ((((uint16_t) &((*(volatile uint8_t *)((0x37) + 0x20)))) - 0x20)), "r" ((uint8_t)((1 << (0)) | (1 << (1)))), "z" ((uint16_t)(uint16_t)(void*)address) ); }));
 
-
-
-     do{}while(((*(volatile uint8_t *)(0x68)) & (uint8_t)(1 << (0))));
+     do{}while(((*(volatile uint8_t *)((0x37) + 0x20)) & (uint8_t)(1 << (0))));
 
 
 
@@ -670,9 +620,9 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
   a = *bufPtr++;
   a |= (*bufPtr++) << 8;
 
-  (__extension__({ __asm__ __volatile__ ( "movw  r0, %3\n\t" "sts %0, %1\n\t" "spm\n\t" "clr  r1\n\t" : : "i" (((uint16_t) &((*(volatile uint8_t *)(0x68))))), "r" ((uint8_t)(1 << (0))), "z" ((uint16_t)(uint16_t)(void*)addrPtr), "r" ((uint16_t)a) : "r0" ); }));
 
 
+  (__extension__({ __asm__ __volatile__ ( "movw  r0, %3\n\t" "out %0, %1\n\t" "spm\n\t" "clr  r1\n\t" : : "i" ((((uint16_t) &((*(volatile uint8_t *)((0x37) + 0x20)))) - 0x20)), "r" ((uint8_t)(1 << (0))), "z" ((uint16_t)(uint16_t)(void*)addrPtr), "r" ((uint16_t)a) : "r0" ); }));
 
   addrPtr += 2;
      } while (len -= 2);
@@ -681,17 +631,17 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
 
 
 
-  (__extension__({ __asm__ __volatile__ ( "sts %0, %1\n\t" "spm\n\t" : : "i" (((uint16_t) &((*(volatile uint8_t *)(0x68))))), "r" ((uint8_t)((1 << (0)) | (1 << (2)))), "z" ((uint16_t)(uint16_t)(void*)address) ); }));
+
+
+     (__extension__({ __asm__ __volatile__ ( "out %0, %1\n\t" "spm\n\t" : : "i" ((((uint16_t) &((*(volatile uint8_t *)((0x37) + 0x20)))) - 0x20)), "r" ((uint8_t)((1 << (0)) | (1 << (2)))), "z" ((uint16_t)(uint16_t)(void*)address) ); }));
+
+     do{}while(((*(volatile uint8_t *)((0x37) + 0x20)) & (uint8_t)(1 << (0))));
 
 
 
-     do{}while(((*(volatile uint8_t *)(0x68)) & (uint8_t)(1 << (0))));
 
 
-
-  (__extension__({ __asm__ __volatile__ ( "sts %0, %1\n\t" "spm\n\t" : : "i" (((uint16_t) &((*(volatile uint8_t *)(0x68))))), "r" ((uint8_t)((1 << (0)) | (1 << (4)))) ); }));
-
-
+     (__extension__({ __asm__ __volatile__ ( "out %0, %1\n\t" "spm\n\t" : : "i" ((((uint16_t) &((*(volatile uint8_t *)((0x37) + 0x20)))) - 0x20)), "r" ((uint8_t)((1 << (0)) | (1 << (4)))) ); }));
 
 
  }
@@ -708,7 +658,7 @@ static inline void read_mem(uint8_t memtype, uint16_t address, pagelen_t length)
 
     case 'E':
  do {
-     putch(__eerd_byte_m128((uint8_t *)(address++)));
+     putch(eeprom_read_byte((uint8_t *)(address++)));
  } while (--length);
  break;
 

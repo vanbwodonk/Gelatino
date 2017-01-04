@@ -103,28 +103,29 @@ void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode) {
         EICRB = (EICRB & ~((1<<ISC60) | (1<<ISC61))) | (mode << ISC60);
         EIMSK |= (1<<INT6);
         break;
+// ATmega64, ATmega128, ATmega1281, ATmeg2561        
 #elif defined(EICRA) && defined(EICRB) && defined(EIMSK)
-    case 2:
+    case 0:
       EICRA = (EICRA & ~((1 << ISC00) | (1 << ISC01))) | (mode << ISC00);
       EIMSK |= (1 << INT0);
       break;
-    case 3:
+    case 1:
       EICRA = (EICRA & ~((1 << ISC10) | (1 << ISC11))) | (mode << ISC10);
       EIMSK |= (1 << INT1);
       break;
-    case 4:
+    case 2:
       EICRA = (EICRA & ~((1 << ISC20) | (1 << ISC21))) | (mode << ISC20);
       EIMSK |= (1 << INT2);
       break;
-    case 5:
+    case 3:
       EICRA = (EICRA & ~((1 << ISC30) | (1 << ISC31))) | (mode << ISC30);
       EIMSK |= (1 << INT3);
       break;
-    case 0:
+    case 4:
       EICRB = (EICRB & ~((1 << ISC40) | (1 << ISC41))) | (mode << ISC40);
       EIMSK |= (1 << INT4);
       break;
-    case 1:
+    case 5:
       EICRB = (EICRB & ~((1 << ISC50) | (1 << ISC51))) | (mode << ISC50);
       EIMSK |= (1 << INT5);
       break;
@@ -206,23 +207,24 @@ void detachInterrupt(uint8_t interruptNum) {
     case 4:
         EIMSK &= ~(1<<INT6);
         break;	
+// ATmega64, ATmega128, ATmega1281, ATmeg2561          
 #elif defined(EICRA) && defined(EICRB) && defined(EIMSK)
-    case 2:
+    case 0:
       EIMSK &= ~(1 << INT0);
       break;
-    case 3:
+    case 1:
       EIMSK &= ~(1 << INT1);
       break;
-    case 4:
+    case 2:
       EIMSK &= ~(1 << INT2);
       break;
-    case 5:
+    case 3:
       EIMSK &= ~(1 << INT3);
       break;
-    case 0:
+    case 4:
       EIMSK &= ~(1 << INT4);
       break;
-    case 1:
+    case 5:
       EIMSK &= ~(1 << INT5);
       break;
     case 6:
