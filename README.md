@@ -25,7 +25,7 @@ pinMode(PB_5, OUTPUT);  //set PinB.5 as output
 digitalWrite(PB_5, HIGH); //set PinB.5 High
 ```
 
-##How to install
+## How to install ##
 #### Online Instalation
 This installation method requires Arduino IDE version 1.6.4 or greater.
 * Open the Arduino IDE.
