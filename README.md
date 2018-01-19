@@ -3,7 +3,7 @@
 Other Arduino Compatible Core Project.
 
 Gelatino is Arduino core for another AVR 8-bit which is not available in Arduino IDE. 
-Gelatino Cores now  supported ATmega128 ,ATmega16, , ATmega32, ATmega1284 and ATmega162. All AVR chips in my current office.
+Gelatino Cores now  supported ATmega128 ,ATmega16,ATmega32, ATmega1284 and ATmega162. All AVR chips in my current office.
 
 *Last tested on arduino-1.8.0
 
