@@ -18,8 +18,6 @@
   Public License along with this library; if not, write to the
   Free Software Foundation, Inc., 59 Temple Place, Suite 330,
   Boston, MA  02111-1307  USA
-
-  $Id$
 */
 
 #include "wiring_private.h"
@@ -107,11 +105,11 @@ unsigned long micros() {
 
 void delay(unsigned long ms)
 {
-	uint16_t start = (uint16_t)micros();
+	uint32_t start = micros();
 
 	while (ms > 0) {
 		yield();
-		if (((uint16_t)micros() - start) >= 1000) {
+		while ( ms > 0 && (micros() - start) >= 1000) {
 			ms--;
 			start += 1000;
 		}
@@ -255,15 +253,19 @@ void init()
 #endif
 
 	// set timer 0 prescale factor to 64
-#if defined(__AVR_ATmega128__)
-	// CPU specific: different values for the ATmega128
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+	// CPU specific: different values for the ATmega64/128
+	sbi(TCCR0, WGM00);
+	sbi(TCCR0, WGM01);
 	sbi(TCCR0, CS02);
 #elif defined(TCCR0) && defined(CS01) && defined(CS00)
-	// this combination is for the standard atmega8
+	// this combination is for the ATmega8535, ATmega8, ATmega16, ATmega32, ATmega8515, ATmega162
 	sbi(TCCR0, CS01);
 	sbi(TCCR0, CS00);
+	sbi(TCCR0, WGM00);
+	sbi(TCCR0, WGM01);
 #elif defined(TCCR0B) && defined(CS01) && defined(CS00)
-	// this combination is for the standard 168/328/1280/2560
+	// this combination is for the standard 168/328/640/1280/1281/2560/2561
 	sbi(TCCR0B, CS01);
 	sbi(TCCR0B, CS00);
 #elif defined(TCCR0A) && defined(CS01) && defined(CS00)
@@ -305,8 +307,6 @@ void init()
 	// put timer 1 in 8-bit phase correct pwm mode
 #if defined(TCCR1A) && defined(WGM10)
 	sbi(TCCR1A, WGM10);
-#elif defined(TCCR1)
-	#warning this needs to be finished
 #endif
 
 	// set timer 2 prescale factor to 64
@@ -314,8 +314,8 @@ void init()
 	sbi(TCCR2, CS22);
 #elif defined(TCCR2B) && defined(CS22)
 	sbi(TCCR2B, CS22);
-#else
-	#warning Timer 2 not finished (may not be present on this CPU)
+//#else
+	// Timer 2 not finished (may not be present on this CPU)
 #endif
 
 	// configure timer 2 for phase correct pwm (8-bit)
@@ -323,8 +323,8 @@ void init()
 	sbi(TCCR2, WGM20);
 #elif defined(TCCR2A) && defined(WGM20)
 	sbi(TCCR2A, WGM20);
-#else
-	#warning Timer 2 not finished (may not be present on this CPU)
+//#else
+	// Timer 2 not finished (may not be present on this CPU)
 #endif
 
 #if defined(TCCR3B) && defined(CS31) && defined(WGM30)
@@ -340,13 +340,13 @@ void init()
 	sbi(TCCR4D, WGM40);		// put timer 4 in phase- and frequency-correct PWM mode	
 	sbi(TCCR4A, PWM4A);		// enable PWM mode for comparator OCR4A
 	sbi(TCCR4C, PWM4D);		// enable PWM mode for comparator OCR4D
-#else /* beginning of timer4 block for ATMEGA1280 and ATMEGA2560 */
+#else /* beginning of timer4 block for ATMEGA640, ATMEGA1280 and ATMEGA2560 */
 #if defined(TCCR4B) && defined(CS41) && defined(WGM40)
 	sbi(TCCR4B, CS41);		// set timer 4 prescale factor to 64
 	sbi(TCCR4B, CS40);
 	sbi(TCCR4A, WGM40);		// put timer 4 in 8-bit phase correct pwm mode
 #endif
-#endif /* end timer4 block for ATMEGA1280/2560 and similar */	
+#endif /* end timer4 block for ATMEGA640/1280/2560 and similar */	
 
 #if defined(TCCR5B) && defined(CS51) && defined(WGM50)
 	sbi(TCCR5B, CS51);		// set timer 5 prescale factor to 64

@@ -18,8 +18,6 @@
   Public License along with this library; if not, write to the
   Free Software Foundation, Inc., 59 Temple Place, Suite 330,
   Boston, MA  02111-1307  USA
-
-  $Id: wiring.h 239 2007-01-12 17:58:39Z mellis $
 */
 
 #ifndef WiringPrivate_h
@@ -44,27 +42,6 @@ extern "C"{
 #endif
 
 uint32_t countPulseASM(volatile uint8_t *port, uint8_t bit, uint8_t stateMask, unsigned long maxloops);
-
-#define EXTERNAL_INT_0 0
-#define EXTERNAL_INT_1 1
-#define EXTERNAL_INT_2 2
-#define EXTERNAL_INT_3 3
-#define EXTERNAL_INT_4 4
-#define EXTERNAL_INT_5 5
-#define EXTERNAL_INT_6 6
-#define EXTERNAL_INT_7 7
-
-#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega128RFA1__) || defined(__AVR_ATmega256RFR2__) || defined(__AVR_ATmega128__)
-#define EXTERNAL_NUM_INTERRUPTS 8
-#elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
-#define EXTERNAL_NUM_INTERRUPTS 3
-#elif defined(__AVR_ATmega32U4__)
-#define EXTERNAL_NUM_INTERRUPTS 5
-#elif defined(__AVR_ATmega16__) || defined(__AVR_ATmega32__) || defined(__AVR_ATmega8535__)
-#define EXTERNAL_NUM_INTERRUPTS 3
-#else
-#define EXTERNAL_NUM_INTERRUPTS 2
-#endif
 
 typedef void (*voidFuncPtr)(void);
 
