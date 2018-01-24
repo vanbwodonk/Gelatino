@@ -43,26 +43,6 @@ extern "C"{
 
 uint32_t countPulseASM(volatile uint8_t *port, uint8_t bit, uint8_t stateMask, unsigned long maxloops);
 
-#define EXTERNAL_INT_0 0
-#define EXTERNAL_INT_1 1
-#define EXTERNAL_INT_2 2
-#define EXTERNAL_INT_3 3
-#define EXTERNAL_INT_4 4
-#define EXTERNAL_INT_5 5
-#define EXTERNAL_INT_6 6
-#define EXTERNAL_INT_7 7
-
-#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__) \
-|| defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
-#define EXTERNAL_NUM_INTERRUPTS 8
-#elif defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__)
-#define EXTERNAL_NUM_INTERRUPTS 3
-#elif defined(__AVR_ATmega32U4__)
-#define EXTERNAL_NUM_INTERRUPTS 5
-#else
-#define EXTERNAL_NUM_INTERRUPTS 2
-#endif
-
 typedef void (*voidFuncPtr)(void);
 
 #ifdef __cplusplus

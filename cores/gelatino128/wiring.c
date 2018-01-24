@@ -259,11 +259,13 @@ void init()
 	sbi(TCCR0, WGM01);
 	sbi(TCCR0, CS02);
 #elif defined(TCCR0) && defined(CS01) && defined(CS00)
-	// this combination is for the standard atmega8
+	// this combination is for the ATmega8535, ATmega8, ATmega16, ATmega32, ATmega8515, ATmega162
 	sbi(TCCR0, CS01);
 	sbi(TCCR0, CS00);
+	sbi(TCCR0, WGM00);
+	sbi(TCCR0, WGM01);
 #elif defined(TCCR0B) && defined(CS01) && defined(CS00)
-	// this combination is for the standard 168/328/1280/1281/2560/2561
+	// this combination is for the standard 168/328/640/1280/1281/2560/2561
 	sbi(TCCR0B, CS01);
 	sbi(TCCR0B, CS00);
 #elif defined(TCCR0A) && defined(CS01) && defined(CS00)
@@ -338,13 +340,13 @@ void init()
 	sbi(TCCR4D, WGM40);		// put timer 4 in phase- and frequency-correct PWM mode	
 	sbi(TCCR4A, PWM4A);		// enable PWM mode for comparator OCR4A
 	sbi(TCCR4C, PWM4D);		// enable PWM mode for comparator OCR4D
-#else /* beginning of timer4 block for ATMEGA1280 and ATMEGA2560 */
+#else /* beginning of timer4 block for ATMEGA640, ATMEGA1280 and ATMEGA2560 */
 #if defined(TCCR4B) && defined(CS41) && defined(WGM40)
 	sbi(TCCR4B, CS41);		// set timer 4 prescale factor to 64
 	sbi(TCCR4B, CS40);
 	sbi(TCCR4A, WGM40);		// put timer 4 in 8-bit phase correct pwm mode
 #endif
-#endif /* end timer4 block for ATMEGA1280/2560 and similar */	
+#endif /* end timer4 block for ATMEGA640/1280/2560 and similar */	
 
 #if defined(TCCR5B) && defined(CS51) && defined(WGM50)
 	sbi(TCCR5B, CS51);		// set timer 5 prescale factor to 64

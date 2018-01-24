@@ -28,7 +28,8 @@
 #include <avr/pgmspace.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
-
+//#include <avr/power.h>
+//#include <avr/sleep.h>
 #include "binary.h"
 
 #ifdef __cplusplus
@@ -61,18 +62,45 @@ void yield(void);
 #define FALLING 2
 #define RISING 3
 
-#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
-#define EXTERNAL 1
-#define INTERNAL 2
-#else  
-#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
-#define INTERNAL1V1 2
-#define INTERNAL2V56 3
-#else
-#define INTERNAL 3
-#endif
-#define DEFAULT 1
-#define EXTERNAL 0
+/* Analog reference definitions */
+
+// ATmega8535, ATmega8, ATmega16, ATmega32, ATmega64, ATmega128
+#if defined(__AVR_ATmega8535__) || defined(__AVR_ATmega8__) || defined(__AVR_ATmega16__) \
+|| defined(__AVR_ATmega32__) || defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+  #define EXTERNAL 0
+  #define DEFAULT 1 // Default -> AVCC with external capacitor at AREF pin
+  #define INTERNAL2V56 3
+  #define INTERNAL 3
+  
+// ATmega48/P, ATmega88/P, ATmega168/P, ATmega328/P
+#elif defined(__AVR_ATmega48__) || defined(__AVR_ATmega48P__) || defined(__AVR_ATmega88__)  \
+|| defined(__AVR_ATmega88P__) || defined(__AVR_ATmega168__) || defined(__AVR_ATmega168P__)  \
+|| defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__)
+  #define EXTERNAL 0
+  #define DEFAULT 1 // Default -> AVCC with external capacitor at AREF pin
+  #define INTERNAL1V1 3
+  #define INTERNAL 3  
+
+// ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561
+#elif defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) \
+|| defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
+  #define EXTERNAL 0
+  #define DEFAULT 1 // Default -> AVCC with external capacitor at AREF pin
+  #define INTERNAL1V1 2
+  #define INTERNAL2V56 3
+  #define INTERNAL 3  
+
+
+// ATmega164A/P, ATmega324A/P/PA, ATmega644/P, ATmega1284/P
+#elif defined(__AVR_ATmega164A__) || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega324A__) \
+|| defined(__AVR_ATmega324PA__) || defined(__AVR_ATmega324P__) || defined(__AVR_ATmega644__)  \
+|| defined(__AVR_ATmega644P__)  || defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__)   
+  #define EXTERNAL 0
+  #define DEFAULT 1 // Default -> AVCC with external capacitor at AREF pin
+  #define INTERNAL1V1 2
+  #define INTERNAL2V56 3
+  #define INTERNAL 3  
+
 #endif
 
 // undefine stdlib's abs if encountered
@@ -176,6 +204,14 @@ extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
 #define NOT_A_PIN 0
 #define NOT_A_PORT 0
 
+#define EXTERNAL_INT_0 0
+#define EXTERNAL_INT_1 1
+#define EXTERNAL_INT_2 2
+#define EXTERNAL_INT_3 3
+#define EXTERNAL_INT_4 4
+#define EXTERNAL_INT_5 5
+#define EXTERNAL_INT_6 6
+#define EXTERNAL_INT_7 7
 #define NOT_AN_INTERRUPT -1
 
 #ifdef ARDUINO_MAIN
@@ -183,7 +219,14 @@ extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
 #define PB 2
 #define PC 3
 #define PD 4
-#define PE 5
+
+// Fix compiler warning for ATmega8/8535/16/32
+#if defined(__AVR_ATmega8__) || defined(__AVR_ATmega8535__) || defined(__AVR_ATmega16__) \
+|| defined(__AVR_ATmega32__) || defined(__AVR_ATmega8515__)
+#else 
+#define PE 5	
+#endif
+
 #define PF 6
 #define PG 7
 #define PH 8
@@ -193,26 +236,26 @@ extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
 #endif
 
 #define NOT_ON_TIMER 0
-#define TIMER0  1 //Needed for ATmega64/128
-#define TIMER0A 1
-#define TIMER0B 2
-#define TIMER1A 3
-#define TIMER1B 4
-#define TIMER1C 5
-#define TIMER2  6
-#define TIMER2A 7
-#define TIMER2B 8
+#define TIMER0  1 //Needed for ATmega64/128 and ATmega8515/162
+#define TIMER0A 2
+#define TIMER0B 3
+#define TIMER1A 4
+#define TIMER1B 5
+#define TIMER1C 6
+#define TIMER2  7
+#define TIMER2A 8
+#define TIMER2B 9
 
-#define TIMER3A 9
-#define TIMER3B 10
-#define TIMER3C 11
-#define TIMER4A 12
-#define TIMER4B 13
-#define TIMER4C 14
-#define TIMER4D 15
-#define TIMER5A 16
-#define TIMER5B 17
-#define TIMER5C 18
+#define TIMER3A 10
+#define TIMER3B 11
+#define TIMER3C 12
+#define TIMER4A 13
+#define TIMER4B 14
+#define TIMER4C 15
+#define TIMER4D 16
+#define TIMER5A 17
+#define TIMER5B 18
+#define TIMER5C 19
 
 /* Power management constants */
 #define POWER_ADC 0
@@ -244,6 +287,7 @@ extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
 #include "HardwareSerial.h"
 #include "USBAPI.h"
 #include "wiring_extras.h"
+
 
 #if defined(HAVE_HWSERIAL0) && defined(HAVE_CDCSERIAL)
 #error "Targets with both UART0 and CDC serial not supported"
