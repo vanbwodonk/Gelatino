@@ -91,9 +91,15 @@
 #include <avr/pgmspace.h>
 
 
+#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
 #define NUM_DIGITAL_PINS            53
+#elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+#define NUM_DIGITAL_PINS            54
+#endif	
 #define NUM_ANALOG_INPUTS           8
+#define EXTERNAL_NUM_INTERRUPTS     8
 #define analogInputToDigitalPin(p) (((p) < 8) ? (p) + 45 : -1)
+#define analogPinToChannel(p)      ((p) < NUM_ANALOG_INPUTS ? (p) : (p) >= 45 ? (p) - 45 : -1)
 #define digitalPinHasPWM(p)        (((p) >= 3 && (p) <= 5) || ((p) >= 12 && (p) <= 15))
 #define digitalPinToInterrupt(p)   (((p) >= 4 && (p) <= 7) ? (p) : ((p) >= 18 && (p) <= 21) ? (p) - 18 : NOT_AN_INTERRUPT)
 
@@ -104,8 +110,8 @@ static const uint8_t MISO = 11;
 
 #define LED_BUILTIN 13
 
-static const uint8_t SDA = 18;
-static const uint8_t SCL = 19;
+static const uint8_t SCL = 18;
+static const uint8_t SDA = 19;
 
 static const uint8_t A0 = 45;
 static const uint8_t A1 = 46;
@@ -115,6 +121,23 @@ static const uint8_t A4 = 49;
 static const uint8_t A5 = 50;
 static const uint8_t A6 = 51;
 static const uint8_t A7 = 52;
+
+
+
+#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+// PCINT defs
+#define digitalPinToPCICR(p)    ((((p) >= 8) && ((p) <= 15)) || ((p) == 0) ? \
+                                (&PCICR) : ((uint8_t*)0))
+                                
+#define digitalPinToPCICRbit(p) ((((p) >= 8) && ((p) <= 15)) ? 0 : \
+                                ((((p) == 0)  ? 1 : 0)))
+
+#define digitalPinToPCMSK(p)    ((((p) >= 8) && ((p) <= 15)) ? (&PCMSK0) : \
+                                ((((p) == 0)  ? (&PCMSK1) : ((uint8_t*)0))))
+                                
+#define digitalPinToPCMSKbit(p) ((((p) >= 8) && ((p) <= 15)) ? ((p) - 8) : \
+                                (((p) ==  0) ? 1 : 0))
+#endif
 
 
 
@@ -214,7 +237,11 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PF, // PF4 ** D49 ** A4	
 	PF, // PF5 ** D50 ** A5	
 	PF, // PF6 ** D51 ** A6	
-	PF, // PF7 ** D52 ** A7	
+	PF, // PF7 ** D52 ** A7
+	
+	#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	PG, // PG5 ** D53 ** PWM
+	#endif
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
@@ -279,15 +306,19 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV(5), // PF5 ** D50 ** A5	
 	_BV(6), // PF6 ** D51 ** A6	
 	_BV(7), // PF7 ** D52 ** A7	
+	
+	#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	_BV(5), // PG5 ** D53 ** PWM
+	#endif
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // PE0 ** D0 ** RX0	
 	NOT_ON_TIMER, // PE1 ** D1 ** TX0	
 	NOT_ON_TIMER, // PE2 ** D2
-	TIMER3A, 	  // PE3 ** D3 ** PWM
-	TIMER3B, 	  // PE4 ** D4 ** PWM	
-	TIMER3C, 	  // PE5 ** D5 ** PWM
+	TIMER3A,      // PE3 ** D3 ** PWM
+	TIMER3B,      // PE4 ** D4 ** PWM	
+	TIMER3C,      // PE5 ** D5 ** PWM
 	NOT_ON_TIMER, // PE6 ** D6 
 	NOT_ON_TIMER, // PE7 ** D7
 	
@@ -295,10 +326,14 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // PB1 ** D9 ** SCK
 	NOT_ON_TIMER, // PB2 ** D10 ** MOSI	
 	NOT_ON_TIMER, // PB3 ** D11 ** MISO	
-	TIMER0, 	  // PB4 ** D12 ** PWM
-	TIMER1A, 	  // PB5 ** D13 ** PWM
-	TIMER1B, 	  // PB6 ** D14 ** PWM	
-	TIMER1C, 	  // PB7 ** D15 ** PWM	
+	#if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
+	TIMER0,       // PB4 ** D12 ** PWM
+	#elif defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	TIMER2A,      // PB4 ** D12 ** PWM
+	#endif	
+	TIMER1A,      // PB5 ** D13 ** PWM
+	TIMER1B,      // PB6 ** D14 ** PWM	
+	TIMER1C,      // PB7 ** D15 ** PWM	
 	
 	NOT_ON_TIMER, // PG3 ** D16
 	NOT_ON_TIMER, // PG4 ** D17
@@ -342,7 +377,11 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // PF4 ** D49 ** A4	
 	NOT_ON_TIMER, // PF5 ** D50 ** A5	
 	NOT_ON_TIMER, // PF6 ** D51 ** A6	
-	NOT_ON_TIMER, // PF7 ** D52 ** A7	
+	NOT_ON_TIMER, // PF7 ** D52 ** A7
+	
+	#if defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2561__)
+	TIMER0B,      // PG5 ** D53 ** PWM
+	#endif
 };
 
 #endif
